@@ -1,5 +1,6 @@
 ---
-import { Image } from "@astrojs/image/components";
+// import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
 import PageTransition from "~components/Base/PageTransition.astro";
 import TextRegular from "~components/Base/TextRegular.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
@@ -13,13 +14,11 @@ const PHRASES = [
   "This site is still enjoyable without JS!",
 ];
 const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
-
-import me from "~posts/me.png";
 ---
 
 <MainLayout
   head={{
-    image: me,
+    image: "/assets/me.png",
     description: "Roy Eden: Developer, Musician, and Artist...",
     pageType: "Homepage",
     title: "Roy Eden - Home",
@@ -31,12 +30,19 @@ import me from "~posts/me.png";
       <div
         class="bg-white rounded-full aspect-square md:w-full w-60 md:max-w-sm lg:max-w-md"
       >
-        <Image
+        <!-- <Image
           height={448}
           width={448}
           class="rounded-full motion-safe:animate-gradient rainbow-gradient"
           format="webp"
           src={me}
+          alt="A picture of me looking at the camera"
+        /> -->
+        <LazyImage
+          height={448}
+          width={448}
+          class="rounded-full motion-safe:animate-gradient rainbow-gradient"
+          src="/assets/me.png"
           alt="A picture of me looking at the camera"
         />
       </div>

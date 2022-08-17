@@ -4,7 +4,7 @@ draft: false
 
 date: "Mon Jul 04 2022"
 description: "A project that uses dithered layers and transparency to compose an image."
-image: "/posts/projects/2022/07/04/layered-dithering/layered-dithering.png"
+image: "/assets/posts/projects/2022/07/04/layered-dithering/layered-dithering.png"
 tags:
   [
     "JavaScript",
@@ -23,12 +23,9 @@ tags:
 title: "Layered Dithering"
 ---
 
-import { Image } from "@astrojs/image/components";
 import LazyImage from "~components/Base/LazyImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
-
-import mainImage from "~posts/projects/2022/07/04/layered-dithering/layered-dithering.png";
 
 export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 
@@ -37,7 +34,7 @@ export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 ## A project that uses dithered layers and transparency to compose an image
 
 <SmartLink class="block" href="https://layered-dithering.vercel.app/">
-  <Image src={mainImage} alt="An image showcasing the web app" />
+  ![A screenshot showcasing the app](/assets/posts/projects/2022/07/04/layered-dithering/layered-dithering.png)
 </SmartLink>
 
 <div id="content">

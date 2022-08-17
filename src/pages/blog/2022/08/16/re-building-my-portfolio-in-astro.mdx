@@ -4,7 +4,7 @@ draft: false
 
 date: "8/16/2022"
 description: "Why I choose this framework above everything else right now..."
-image: "/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png"
+image: "/assets/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png"
 tags:
   [
     "HTML",
@@ -25,18 +25,15 @@ tags:
 title: "Re-building my portfolio in Astro"
 ---
 
-import { Image } from "@astrojs/image/components";
 import LazyImage from "~components/Base/LazyImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
-
-import mainImage from "~posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png";
 
 export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 
 # Why Astro?
 
-<Image src={mainImage} format="webp" alt="The new homepage for my portfolio" />
+![The new homepage for my portfolio](/assets/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png)
 _A screenshot of my new portfolio_
 
 <div id="content">

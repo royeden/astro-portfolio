@@ -4,7 +4,7 @@ draft: false
 
 date: "2/27/2020"
 description: "A Synth that makes sound based on your movement with the help of TensorflowJS."
-image: "/posts/projects/2020/02/27/motion-synth/motion-synth.png"
+image: "/assets/posts/projects/2020/02/27/motion-synth/motion-synth.png"
 tags:
   [
     "CSS",
@@ -18,13 +18,9 @@ tags:
   ]
 title: "Motion Synth"
 ---
-
-import { Image } from "@astrojs/image/components";
 import LazyImage from "~components/Base/LazyImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
-
-import mainImage from "~posts/projects/2020/02/27/motion-synth/motion-synth.png";
 
 export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 
@@ -33,7 +29,7 @@ export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 ## A Synth that makes sound based on your movement with the help of TensorflowJS
 
 <SmartLink class="block" href="https://motion-synth.netlify.app/">
-  <Image src={mainImage} alt="A showcase of the webapp" />
+  ![A screenshot showcasing the app](/assets/posts/projects/2020/02/27/motion-synth/motion-synth.png)
 </SmartLink>
 
 <div id="content">

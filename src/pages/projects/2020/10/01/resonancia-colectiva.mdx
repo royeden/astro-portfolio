@@ -4,7 +4,7 @@ draft: false
 
 date: "10/1/2020"
 description: "A collaborative audiovisual project made during the 2020 pandemic."
-image: "/posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png"
+image: "/assets/posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png"
 tags:
   [
     "JavaScript",
@@ -22,17 +22,9 @@ tags:
   ]
 title: "Resonancia Colectiva"
 ---
-
-import { Image } from "@astrojs/image/components";
 import LazyImage from "~components/Base/LazyImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
-
-import mainImage from "~posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png";
-import showcase001 from "~posts/projects/2020/10/01/resonancia-colectiva/001.png";
-import showcase002 from "~posts/projects/2020/10/01/resonancia-colectiva/002.png";
-import showcase003 from "~posts/projects/2020/10/01/resonancia-colectiva/003.png";
-import showcase004 from "~posts/projects/2020/10/01/resonancia-colectiva/004.png";
 
 export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 
@@ -41,11 +33,7 @@ export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 ## A collaborative audiovisual project made during the 2020 pandemic
 
 <SmartLink class="block" href="https://pandemi-ae.vercel.app/">
-  <Image
-    src={mainImage}
-    format="webp"
-    alt="Two hands holding an SD memory card with the label of the project"
-  />
+  ![Two hands holding an SD memory card with the label of the project](/assets/posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png)
 </SmartLink>
 
 <div id="content">
@@ -75,12 +63,9 @@ The source code can be viewed [here](https://github.com/alumnxslaboII2020/sitio-
 ## Showcase
 
   <div class="grid md:grid-cols-2 gap-2">
-    {[showcase001, showcase002, showcase003, showcase004].map((src, index) => 
-      <Image
-        src={src}
-        format="webp"
-        alt={`Shocase image ${index} + 1`}
-      />
-    )}
+    ![Showcase image 1](/assets/posts/projects/2020/10/01/resonancia-colectiva/001.png)
+    ![Showcase image 2](/assets/posts/projects/2020/10/01/resonancia-colectiva/002.png)
+    ![Showcase image 3](/assets/posts/projects/2020/10/01/resonancia-colectiva/003.png)
+    ![Showcase image 4](/assets/posts/projects/2020/10/01/resonancia-colectiva/004.png)
   </div>
 </div>

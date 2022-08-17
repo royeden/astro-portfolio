@@ -4,7 +4,7 @@ draft: false
 
 date: "11/24/2021"
 description: "A demo to showcase a small library made with framer motion to play a game where you have to sort pieces"
-image: "/posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png"
+image: "/assets/posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png"
 tags:
   [
     "TypeScript",
@@ -19,12 +19,9 @@ tags:
 title: "Sorting pieces"
 ---
 
-import { Image } from "@astrojs/image/components";
 import LazyImage from "~components/Base/LazyImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
-
-import mainImage from "~posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png";
 
 export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 
@@ -33,7 +30,7 @@ export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 ## A demo to showcase a small library made with framer motion to play a game where you have to sort pieces
 
 <SmartLink class="block" href="http://demo-sort-pieces.vercel.app/">
-  <Image src={mainImage} alt="main image for the post" />
+  ![An image showcasing the demo app](/assets/posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png)
 </SmartLink>
 <div id="content">
   ### About

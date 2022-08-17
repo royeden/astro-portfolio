@@ -39,22 +39,22 @@ const posts = await Promise.all(
       throw new Error(`No title for post ${file}`);
     }
 
-    const image = post.image
-      ? (
-          await getImage({
-            src: post.image,
-            format: "webp",
-            width: 320,
-            height: 236,
-          })
-        ).src
-      : "";
+    // const image = post.image
+    //   ? (
+    //       await getImage({
+    //         src: post.image,
+    //         format: "webp",
+    //         width: 320,
+    //         height: 236,
+    //       })
+    //     ).src
+    //   : "";
 
     return {
       date: post.date,
       description: post.description,
       href: url,
-      image,
+      image: post.image,
       tags: post.tags,
       title: post.title,
     };
