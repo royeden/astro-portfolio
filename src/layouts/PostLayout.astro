@@ -16,11 +16,10 @@ const { image, description, title, url, tags, layout } = Astro.props as Props;
 <!-- TODO add content tables -->
 <MainLayout
   head={{
-    image: image ?? "",
+    image: image ? `${import.meta.env.SITE}${image}` : undefined,
     description: description ?? "",
     pageType: "Article",
     title: `Roy Eden - ${layout} - ${title}`,
-    url: url,
   }}
 >
   <PageTransition class="flex flex-col items-center px-4 pt-8 w-full">
