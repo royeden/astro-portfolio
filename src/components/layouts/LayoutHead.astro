@@ -7,12 +7,12 @@ export interface Props {
   description: string;
   image?: string;
   url?: string;
-  pageType: string;
+  pageType?: string;
 }
 
 const site = import.meta.env.SITE as string;
 
-const { url = site, image = `${(site.endsWith("/") ? site.slice(0, -1) : site)}/assets/me.png`, ...props} = Astro.props as Props;
+const { url = site, image = `${(site.endsWith("/") ? site.slice(0, -1) : site)}/assets/me.png`, pageType = "website", ...props} = Astro.props as Props;
 ---
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />

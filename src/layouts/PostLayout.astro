@@ -20,7 +20,7 @@ const { image, description, title, url, tags, layout } = Astro.props as Props;
   head={{
     image: image ? `${site.endsWith("/") ? site.slice(0, -1) : site}${image}` : undefined,
     description: description ?? "",
-    pageType: "Article",
+    pageType: "article",
     title: `Roy Eden - ${layout} - ${title}`,
   }}
 >
