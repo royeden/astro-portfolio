@@ -1,0 +1,33 @@
+---
+import PageTransition from "~components/Base/PageTransition.astro";
+import SkipTo from "~components/Base/SkipTo.astro";
+import { Post } from "~constants/posts";
+import MainLayout from "./MainLayout.astro";
+import { MarkdownContent } from "astro";
+import styles from "~styles/prose.module.css";
+
+export type Props = (Post & MarkdownContent) & {
+  layout: "Blog" | "Projects";
+};
+
+const { image, description, title, url, tags, layout } = Astro.props as Props;
+---
+
+<!-- TODO add content tables -->
+<MainLayout
+  head={{
+    image: image ?? "",
+    description: description ?? "",
+    pageType: "Article",
+    title: `Roy Eden - ${layout} - ${title}`,
+    url: url,
+  }}
+>
+  <PageTransition class="flex flex-col items-center px-4 pt-8 w-full">
+    <SkipTo target="content">Skip to content</SkipTo>
+    <SkipTo target="navigation">Skip to navigation</SkipTo>
+    <div class:list={["max-w-full sm:max-w-2xl", styles.content]}>
+      <slot />
+    </div>
+  </PageTransition>
+</MainLayout>

@@ -1,0 +1,97 @@
+---
+// TODO generalize into a single layout
+import PageTransition from "~components/Base/PageTransition.astro";
+import SkipTo from "~components/Base/SkipTo.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+import SearchGrid from "~components/Svelte/SearchGrid.svelte";
+import MainLayout from "./MainLayout.astro";
+import { Post } from "~constants/posts";
+import { MDXInstance } from "astro";
+import { getImage } from "@astrojs/image";
+
+export interface Props {
+  cta: string;
+  placeholder: string;
+  type: "blog" | "projects";
+}
+
+const allPosts: Record<
+  Props["type"],
+  MDXInstance<
+    Post & {
+      draft?: boolean;
+    }
+  >[]
+> = {
+  blog: await Astro.glob<Post & { draft?: boolean }>("../pages/blog/**/*.mdx"),
+  projects: await Astro.glob<Post & { draft?: boolean }>(
+    "../pages/projects/**/*.mdx"
+  ),
+};
+
+const { cta, placeholder, type } = Astro.props as Props;
+
+const query = Astro.url.searchParams.get("search") ?? "";
+
+const posts = await Promise.all(
+  allPosts[type].map(async ({ frontmatter: post, file, url }) => {
+    if (!post.title && !post.draft) {
+      throw new Error(`No title for post ${file}`);
+    }
+
+    const image = post.image
+      ? (
+          await getImage({
+            src: post.image,
+            format: "webp",
+            width: 320,
+            height: 236,
+          })
+        ).src
+      : "";
+
+    return {
+      date: post.date,
+      description: post.description,
+      href: url,
+      image,
+      tags: post.tags,
+      title: post.title,
+    };
+  })
+);
+
+posts.sort(
+  (postA, postB) =>
+    new Date(postB.date).getTime() - new Date(postA.date).getTime()
+);
+
+const title = type.substring(0, 1).toLocaleUpperCase() + type.substring(1);
+---
+
+<MainLayout
+  head={{
+    image: "",
+    description: `Roy Eden: My ${title}...`,
+    pageType: "Homepage",
+    title: `Roy Eden - ${title}`,
+    url: "https://",
+  }}
+>
+  <PageTransition>
+    <SkipTo target="navigation">Skip to navigation</SkipTo>
+    <div class="flex flex-col items-center px-4 pt-8 space-y-2">
+      <TextTitle>
+        <h1>{title}</h1>
+      </TextTitle>
+      <slot />
+      <SearchGrid
+        cta={cta}
+        items={posts.map((post) => post)}
+        placeholder={placeholder}
+        query={query}
+        client:load
+      />
+    </div>
+  </PageTransition>
+</MainLayout>

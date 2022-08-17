@@ -1,0 +1,30 @@
+---
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+import TextHighlight from "~components/UI/TextHighlight.astro";
+import SmartLink from "./SmartLink.astro";
+
+export interface Props extends astroHTML.JSX.HTMLAttributes {
+  target: string;
+}
+
+const { classList, target, ...props } = normalizeAstroClassListProps(
+  Astro.props as Props
+);
+---
+
+<div
+  {...props}
+  class:list={[
+    classList,
+    "flex fixed pointer-events-none transition opacity-0 focus-within:opacity-100 focus-within:pointer-events-auto inset-x-1 top-1 z-40",
+  ]}
+>
+  <SmartLink
+    href={`#${target}`}
+    class="p-3 bg-black hover:bg-neutral-900 w-full text-center"
+  >
+    <TextHighlight>
+      <slot />
+    </TextHighlight>
+  </SmartLink>
+</div>

@@ -1,0 +1,16 @@
+---
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+
+export interface Props extends astroHTML.JSX.HTMLAttributes {}
+
+const props = normalizeAstroClassListProps(Astro.props as Props);
+---
+
+<div
+  class:list={[
+    props.classList,
+    "border-2 rounded-lg border-neutral-800 flex flex-col w-full bg-neutral-900/50",
+  ]}
+>
+  <slot />
+</div>

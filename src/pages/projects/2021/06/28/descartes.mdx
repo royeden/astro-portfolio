@@ -1,0 +1,90 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "Mon Jun 28 2021"
+description: "A 3D gallery that only allows you to enter if you degrade the quality of one of the images that's already present."
+image: "/posts/projects/2021/06/28/descartes/descartes.png"
+tags:
+  [
+    "TypeScript",
+    "React",
+    "NextJS",
+    "Framer-Motion",
+    "Three JS",
+    "TailwindCSS",
+    "Python",
+    "Flask",
+    "UMAP",
+    "SQLite",
+    "Art",
+    "Artificial Intelligence",
+    "Design",
+    "Open Source",
+  ]
+title: "Descartes"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2021/06/28/descartes/descartes.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# Descartes
+
+## A 3D gallery that only allows you to enter if you degrade the quality of one of the images that's already present
+
+<SmartLink class="block" href="https://descartes.vercel.app/">
+  <Image
+    src={mainImage}
+    alt="A screenshot of the investigation section of the website"
+  />
+</SmartLink>
+_A screenshot of the investigation section of the website_
+
+<div id="content">
+  ### About
+
+_(The gallery is no longer viewable because the server is currently down)_
+
+This project was made for a university final, where we had to make an artistic display based on a concept that included archived images/text and artificial intelligence for the processing of posts.
+
+The site would allow you to visit the gallery via submitting an image of your own and choosing an already present image to "degrade" in quality, "making some room" for your upload.
+It also featured the investigation behind the concept and 3 music tracks that are randomly played one after the other indefenetly.
+
+The Front-End used NextJS, React-Three-Fiber for the 3D gallery and TailwindCSS for styling.
+
+The Back-End was written in Python, using Flask with Swagger to handle Routes (and route documentation), SQLite to handle the metadata in the database, Pillow (a Python Image Library fork) to handle images (Resizing and feature extracting) and UMAP to sort the images in 3D space according to their features (which was saved for fitting additional images, a lighter process that runs much quicker).
+It also supports using Tensorflow for feature extraction but it requires a GPU to run.
+
+The website can be visited [here](https://descartes.vercel.app/).
+
+The Front-End is made with:
+
+- [NextJS](https://nextjs.org).
+- [React](https://reactjs.org).
+- [React-Three-Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction).
+- [TailwindCSS](https://tailwindcss.com/).
+- [TypeScript](https://typescriptlang.org/).
+- [Framer Motion](https://www.framer.com/docs/).
+- [Vercel (Hosting)](https://vercel.com/).
+
+The website source code can be viewed [here](https://github.com/royeden/descartes).
+
+The Back-End is made with:
+
+- [Python](https://python.org).
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/).
+- [SQLite](https://www.sqlite.org/index.html).
+- [UMAP](https://umap-learn.readthedocs.io/en/latest/).
+- [Pillow](https://pillow.readthedocs.io/en/stable/).
+
+The API source code can be viewed [here](https://github.com/royeden/descartes-api).
+
+- [ngrok](https://ngrok.com/) was used for tunneling.
+
+</div>

@@ -1,0 +1,19 @@
+---
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+
+export interface Props extends astroHTML.JSX.HTMLAttributes {}
+
+const { classList, ...props } = normalizeAstroClassListProps(
+  Astro.props as Props
+);
+---
+
+<div
+  {...props}
+  class:list={[
+    classList,
+    "text-center text-transparent bg-repeat-y bg-clip-text font-bold text-4xl pb-1.5 leading-snug md:text-5xl lg:text-7xl motion-safe:animate-gradient rainbow-gradient",
+  ]}
+>
+  <slot />
+</div>

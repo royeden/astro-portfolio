@@ -1,0 +1,43 @@
+---
+import SEO from "simple-astro-seo";
+import "~styles/base.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+  pageType: string;
+}
+
+const props = Astro.props as Props;
+---
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<SEO siteName="Roy Eden" twitterHandle="RoyEde" {...props} />
+
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+<title>{props.title}</title>
+
+<!-- fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap"
+  />
+</noscript>

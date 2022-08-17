@@ -1,0 +1,86 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "10/1/2020"
+description: "A collaborative audiovisual project made during the 2020 pandemic."
+image: "/posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png"
+tags:
+  [
+    "JavaScript",
+    "Markdown",
+    "React",
+    "Gatsby",
+    "Styled Components",
+    "P5JS",
+    "Art",
+    "Design",
+    "Open Source",
+    "SSR",
+    "CMS",
+    "Sanity CMS",
+  ]
+title: "Resonancia Colectiva"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png";
+import showcase001 from "~posts/projects/2020/10/01/resonancia-colectiva/001.png";
+import showcase002 from "~posts/projects/2020/10/01/resonancia-colectiva/002.png";
+import showcase003 from "~posts/projects/2020/10/01/resonancia-colectiva/003.png";
+import showcase004 from "~posts/projects/2020/10/01/resonancia-colectiva/004.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# Resonancia Colectiva
+
+## A collaborative audiovisual project made during the 2020 pandemic
+
+<SmartLink class="block" href="https://pandemi-ae.vercel.app/">
+  <Image
+    src={mainImage}
+    format="webp"
+    alt="Two hands holding an SD memory card with the label of the project"
+  />
+</SmartLink>
+
+<div id="content">
+  ## About
+  
+  This website showcases an audiovisual project made during the 2020 worldwide pandemic.
+  Every single audio clip, visual or image was made through a collaborative process online.
+
+I was in charge of coding the site, organizing the posts and the build process, integrating external scripts and collaborating with the [design team](https://pandemi-ae.vercel.app/agradecimientos).
+
+The site is made with:
+
+- [Gastby](https://gatsbyjs.com).
+- [React](https://reactjs.org).
+- [Styled-Components (with emotion)](https://emotion.sh/).
+- [GraphQL (API)](https://graphql.org/).
+- [p5js (WEBGL animations)](https://p5js.org/).
+- [Sanity (CMS)](https://sanity.io/).
+- [Vercel (Hosting)](https://vercel.com/).
+
+For a more detailed list, check [this link](https://pandemi-ae.vercel.app/tecnologias-del-sitio).
+
+The website can be visited [here](https://pandemi-ae.vercel.app).
+
+The source code can be viewed [here](https://github.com/alumnxslaboII2020/sitio-sonido).
+
+## Showcase
+
+  <div class="grid md:grid-cols-2 gap-2">
+    {[showcase001, showcase002, showcase003, showcase004].map((src, index) => 
+      <Image
+        src={src}
+        format="webp"
+        alt={`Shocase image ${index} + 1`}
+      />
+    )}
+  </div>
+</div>

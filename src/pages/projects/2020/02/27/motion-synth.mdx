@@ -1,0 +1,62 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "2/27/2020"
+description: "A Synth that makes sound based on your movement with the help of TensorflowJS."
+image: "/posts/projects/2020/02/27/motion-synth/motion-synth.png"
+tags:
+  [
+    "CSS",
+    "JavaScript",
+    "React",
+    "TensorflowJS",
+    "TailwindCSS",
+    "Art",
+    "Artificial Intelligence",
+    "Open Source",
+  ]
+title: "Motion Synth"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2020/02/27/motion-synth/motion-synth.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# Motion Synth
+
+## A Synth that makes sound based on your movement with the help of TensorflowJS
+
+<SmartLink class="block" href="https://motion-synth.netlify.app/">
+  <Image src={mainImage} alt="A showcase of the webapp" />
+</SmartLink>
+
+<div id="content">
+### About
+
+_(This project is currently being revisited)_
+
+This project was born from testing a Proof Of Concept regarding the usage of TensorflowJS with React. It was inspired by the Theremin.
+
+Using TensorflowJS's bodypix, it takes the keypoints of your body via the webcam and maps those values to a Synth frequency that's based on the notes of a Piano.
+
+The site is made with:
+
+- [React](https://reactjs.org).
+- [Styled-Components](https://styled-components.com/).
+- [TensorflowJS](https://www.tensorflow.org/js/).
+- [bodypix](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation).
+- [Netlify (Hosting)](https://netlify.com/).
+- Web Audio API.
+- Web Canvas API.
+
+The website can be visited [here](https://motion-synth.netlify.app/).
+
+The source code can be viewed [here](https://github.com/royeden/tensorflow-body-motion-synth).
+
+</div>

@@ -1,0 +1,47 @@
+---
+// Adapted from https://github.com/JulianCataldo/web-garden/tree/develop/components/Link
+
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+import {
+  createSmartLink,
+  getSmartLinkProps,
+  SmartLinkProps,
+} from "~components/Primitives/SmartLinkPrimitive";
+
+// License https://github.com/JulianCataldo/web-garden/blob/develop/LICENSE
+export type Props = astroHTML.JSX.AnchorHTMLAttributes & SmartLinkProps;
+
+const { classList, href, skipPrefetch, ...props } =
+  normalizeAstroClassListProps(Astro.props as Props);
+
+const smartLink = createSmartLink({ href, skipPrefetch });
+const smartLinkProps = getSmartLinkProps(smartLink);
+---
+
+<a
+  {...props}
+  class:list={[
+    classList,
+    "transition rounded-md duration-300 focus:outline-none focus-visible:ring focus-visible:ring-white/80 focus-visible:hover:ring-white",
+  ]}
+  {...smartLinkProps}
+>
+  <slot />
+</a>
+
+<script>
+  import { handleSmartLinkClick } from "~components/Primitives/SmartLinkPrimitive";
+
+  const contactLinks = Array.from(document.querySelectorAll("[data-contact]"));
+  // TODO: refactor to global event listener
+  contactLinks.forEach((link: HTMLAnchorElement) => {
+    // console.log(link);
+    link.addEventListener(
+      "click",
+      (event: MouseEvent & { target: HTMLAnchorElement }) => {
+        event.preventDefault();
+        handleSmartLinkClick(event);
+      }
+    );
+  });
+</script>

@@ -1,0 +1,15 @@
+---
+export interface Props extends astroHTML.JSX.HTMLAttributes {}
+
+const { class: className, "class:list": classList } = Astro.props as Props;
+---
+
+<span
+  class:list={[
+    className,
+    classList,
+    "text-pink-500 font-semibold transition-colors duration-300 hover:text-pink-400",
+  ]}
+>
+  <slot />
+</span>

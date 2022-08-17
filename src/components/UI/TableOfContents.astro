@@ -1,0 +1,35 @@
+---
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextSubitle from "~components/Base/TextSubitle.astro";
+import Card from "./Card.astro";
+import TextHighlight from "./TextHighlight.astro";
+
+export interface Props extends astroHTML.JSX.HTMLAttributes {
+  items: {
+    title: string;
+    id: string;
+  }[];
+}
+
+const { classList, items, ...props } = normalizeAstroClassListProps(
+  Astro.props as Props
+);
+---
+
+<!-- TODO fix minor z-index glitch with borders --><!-- TODO implement intersection observer to fix table of contents in desktop context -->
+<Card
+  {...props}
+  class:list={[classList, "divide-y divide-neutral-800 max-w-lg w-full"]}
+>
+  <TextSubitle class="p-3">Contents</TextSubitle>
+  {items.map(({ title, id }) => (
+    <span class="transition-colors duration-300 hover:bg-white/5">
+      <SmartLink title={title} class="block w-full" href={`#${id}`}>
+        <TextHighlight class="block w-full p-3 underline">
+          {title}
+        </TextHighlight>
+      </SmartLink>
+    </span>
+  ))}
+</Card>

@@ -1,0 +1,289 @@
+---
+import PageTransition from "~components/Base/PageTransition.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextHighlight from "~components/UI/TextHighlight.astro";
+import TextRegular from "~components/Base/TextRegular.astro";
+import TextSubitle from "~components/Base/TextSubitle.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+import MainLayout from "~layouts/MainLayout.astro";
+import TableOfContents from "~components/UI/TableOfContents.astro";
+import SkipTo from "~components/Base/SkipTo.astro";
+import Card from "~components/UI/Card.astro";
+import Accordion from "~components/Base/Accordion.astro";
+---
+
+<MainLayout
+  head={{
+    image: "",
+    description: "Roy Eden: Developer, Musician, and Artist...",
+    pageType: "Homepage",
+    title: "Roy Eden - Home",
+    url: "https://",
+  }}
+>
+  <PageTransition>
+    <SkipTo target="content">Skip to content</SkipTo>
+    <SkipTo target="navigation">Skip to navigation</SkipTo>
+    <div
+      class="space-y-8 flex flex-col items-center pt-8 w-full leading-snug bg-black/20 px-5 md:px-8"
+    >
+      <TextTitle>
+        <h1>About</h1>
+      </TextTitle>
+      <TableOfContents
+        items={[
+          {
+            title: "Bio",
+            id: "bio",
+          },
+          {
+            title: "Experience",
+            id: "experience",
+          },
+          {
+            title: "My Toolbox",
+            id: "toolbox",
+          },
+        ]}
+      />
+      <section id="content" class="max-w-screen-lg w-full space-y-2" id="bio">
+        <TextSubitle>
+          <h2>Bio:</h2>
+        </TextSubitle>
+        <TextRegular class="space-y-2">
+          <p>
+            Hi! I'm Roy Eden, a Full-Stack Developer &amp; Electronic Arts
+            Student who started coding in 2016 and hasn't stopped ever since!
+            I've picked up some of the concepts of design and also about UX and
+            accessibility over the years. This has also come with an interest in
+            performance and also good DX.
+          </p>
+          <p>
+            I think that programming is and should always be a fun experience,
+            that's why I like sharing it with other people. For example: helping
+            others start on their programmer journeys. It's always a joy to
+            collaborate with others, see how others code and how others think.
+            This is also the reason I love open source projects and try to
+            contribute to them whenever possible. I also love to reverse
+            engineer solutions or modify some code to experiment with what
+            others make.
+          </p>
+        </TextRegular>
+      </section>
+      <section class="max-w-screen-lg w-full space-y-2" id="experience">
+        <TextSubitle>
+          <h2>Experience:</h2>
+        </TextSubitle>
+        <!-- TODO change from flex to grid -->
+        <div class="gap-4 grid grid-cols-1 md:grid-cols-2">
+          {[
+            {
+              workplace: "Widergy",
+              position: "React Native Developer",
+              website: "https://widergy.com/",
+              start: 2018,
+              end: 2019,
+              responsabilities: [
+                "Development of mobile applications for clients by myself and with the rest of the mobile team.",
+                "Training of new colleagues.",
+                "Continous Intregration / Deployment Configuration for the applications using Bitrise & Fastlane.",
+                "Development of complex components for animations/transitions.",
+                "Research/Update tracking for dependencies.",
+                "Research and design for component libraries.",
+              ],
+              stack: [
+                "React",
+                "React Native",
+                "Redux",
+                "Redux-Sagas",
+                "Bitrise",
+                "Fastlane",
+                "Agile Methodology",
+              ],
+            },
+            {
+              workplace: "Worcket",
+              position: "Front-End Developer",
+              website: "https://www.worcket.com/",
+              start: 2019,
+              end: 2020,
+              responsabilities: [
+                "Implemented diverse features across the platform.",
+                "Helped desing & implement a new product.",
+                "Performance & metrics optimizations for all our used sites.",
+                "Performed end to end testing with Cypress.",
+                "Continous Intregration / Deployment Configuration for the mobile application using Bitrise.",
+              ],
+              stack: [
+                "NextJS",
+                "React",
+                "React Native",
+                "Redux",
+                "Bitrise",
+                "Design",
+                "TailwindCSS",
+                "Styled Components",
+                "Cypress",
+              ],
+            },
+            {
+              workplace: "embark.live",
+              position: "Full-Stack Engineer",
+              website: "https://embark.live/",
+              start: 2020,
+              end: 2022,
+              responsabilities: [
+                "Implemented diverse features across the site.",
+                "Co-designed & implemented a unified design system components for the site.",
+                "Improved UI/UX/DX, performance, lighthouse metrics and accessibility across the site.",
+                "Implemented complex animated components.",
+                "Implemented end to end testing with Cypress.",
+              ],
+              stack: [
+                "VueJS (version 2.7.x)",
+                "Laravel",
+                "TailwindCSS",
+                "Cypress",
+                "SQL",
+                "Design",
+                "SASS",
+              ],
+            },
+          ].map(
+            ({
+              workplace,
+              website,
+              position,
+              responsabilities,
+              stack,
+              start,
+              end,
+            }) => (
+              <Card class="w-full space-y-2 p-4">
+                <TextRegular class="space-y-1">
+                  <h3 class="font-bold">{position}</h3>
+                  <div class="flex items-center justify-between space-x-4">
+                    <SmartLink
+                      class="w-full font-bold underline"
+                      href={website}
+                    >
+                      {workplace}
+                    </SmartLink>
+                    <p class="shrink-0 italic">
+                      {start} &mdash; {end}
+                    </p>
+                  </div>
+                </TextRegular>
+                <div class="divide-y-2 divide-white/50">
+                  <div class="pb-4">
+                    <Accordion items={responsabilities} open>
+                      <h4 class="inline">Responsabilities:</h4>
+                    </Accordion>
+                  </div>
+                  <div class="pt-4">
+                    <Accordion items={stack} open>
+                      <h4 class="inline">Tech Stack:</h4>
+                    </Accordion>
+                  </div>
+                </div>
+              </Card>
+            )
+          )}
+          <Card
+            class="w-full p-4 flex flex-col justify-center items-center space-y-2 text-2xl"
+          >
+            <h3 class="font-bold">This could be your company 😁</h3>
+            <p>
+              You can consider <SmartLink
+                class="p-1"
+                href="mailto:roy.ede@gmail.com"
+              >
+                <TextHighlight class="underline">hiring me</TextHighlight>
+              </SmartLink>!
+            </p>
+          </Card>
+        </div>
+      </section>
+      <section class="max-w-screen-lg w-full space-y-3" id="toolbox">
+        <TextSubitle>
+          <h2>My Toolbox:</h2>
+        </TextSubitle>
+        {[
+          {
+            title: "Front-End:",
+            skills: [
+              <span>
+                JavaScript (I'm even
+                <SmartLink
+                  class="p-0.5"
+                  href="https://www.freecodecamp.org/certification/royede/javascript-algorithms-and-data-structures"
+                >
+                  <TextHighlight class="underline">certified</TextHighlight>
+                </SmartLink>
+                ).
+              </span>,
+              "TypeScript (still getting better at it).",
+              "ReactJS (NextJS, Gatsby)",
+              "VueJS (mainly used Vue 2).",
+              "Svelte (still learning).",
+              <span>
+                Astro (
+                <SmartLink
+                  class="p-0.5"
+                  href="http://localhost:3000/blog/2022/08/16/re-building-my-portfolio-in-astro"
+                >
+                  <TextHighlight class="underline">
+                    Powers this site
+                  </TextHighlight>
+                </SmartLink>
+                ).
+              </span>,
+              "Redux (with thunk and sagas).",
+              "Vuex.",
+              "CSS (I mainly use TailwindCSS, also used BEM with SASS).",
+              "React Native (mobile).",
+              "Web Accessibility (learning more everyday).",
+              "Electron for Desktop applications (that where/are currently in development).",
+            ],
+          },
+          {
+            title: "Back-End (Mostly basic or moderate knowledge):",
+            skills: [
+              "Laravel (mainly used with Vapor).",
+              "Python with flask.",
+              "NodeJS / Express.",
+              "SQL, SQLite or MongoDB as Databases.",
+            ],
+          },
+          {
+            title: "Testing:",
+            skills: [
+              "Cypress for End to End Testing.",
+              "uvu/mocha for unit tests.",
+            ],
+          },
+          {
+            title: "Other:",
+            skills: [
+              "JavaScript, Python, Bash or Ruby for basic scripting.",
+              "Pure Data for graphic programming and sound/music processing.",
+              "Processing (Java) / p5js for visuals.",
+              "Currently learning ThreeJS for 3D web visuals.",
+              "Shaders is on the list of things to learn as well.",
+            ],
+          },
+        ].map(({ title, skills }) => (
+          <Accordion items={skills} open>
+            {title}
+          </Accordion>
+        ))}
+      </section>
+      <p class="text-center">
+        I'm currently looking for a job, so feel free to
+        <SmartLink class="p-1" href="mailto:roy.ede@gmail.com">
+          <TextHighlight class="underline">get in touch.</TextHighlight>
+        </SmartLink>
+      </p>
+    </div>
+  </PageTransition>
+</MainLayout>

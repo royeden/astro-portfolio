@@ -1,0 +1,56 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "11/24/2021"
+description: "A demo to showcase a small library made with framer motion to play a game where you have to sort pieces"
+image: "/posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png"
+tags:
+  [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "NextJS",
+    "TailwindCSS",
+    "Design",
+    "Open Source",
+    "Framer-Motion",
+  ]
+title: "Sorting pieces"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# Sorting pieces
+
+## A demo to showcase a small library made with framer motion to play a game where you have to sort pieces
+
+<SmartLink class="block" href="http://demo-sort-pieces.vercel.app/">
+  <Image src={mainImage} alt="main image for the post" />
+</SmartLink>
+<div id="content">
+  ### About
+  [This demo](http://demo-sort-pieces.vercel.app/) showcases a simple game of [a
+  library I made to handle sorting different items in a game with different
+  levels](https://github.com/royeden/sorting-pieces-game). It was made in 2 days for a university project.
+
+This site is made with:
+
+- [NextJS](https://nextjs.org).
+- [React](https://reactjs.org).
+- [TailwindCSS](https://tailwindcss.com/).
+- [TypeScript](https://typescriptlang.org/).
+- [Framer Motion](https://www.framer.com/docs/).
+- [Vercel (Hosting)](https://vercel.com/).
+- [Rollup (for the library bundling)](https://vercel.com/).
+
+The website source code can be found [here](https://github.com/royeden/demo-sort-pieces).
+
+</div>

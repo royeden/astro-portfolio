@@ -1,0 +1,42 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "Sat Apr 28 2018"
+description: "freeCodeCamp's Tic-Tac-Toe project made in React."
+image: "/posts/projects/2018/04/28/react-tic-tac-toe/react-tic-tac-toe.png"
+tags: ["JavaScript", "React", "Styled Components", "Open Source"]
+title: "React Tic-Tac-Toe"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2018/04/28/react-tic-tac-toe/react-tic-tac-toe.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# React Tic-Tac-Toe
+
+## freeCodeCamp's Tic-Tac-Toe project made in React
+
+<SmartLink class="block" href="https://royeden.github.io/react_tic-tac-toe/">
+  <Image src={mainImage} alt="A showcase of the webapp" />
+</SmartLink>
+
+<div id="content">
+  ### About
+  [freeCodeCamp](https://freecodecamp.org)'s currriculum included a challenge to build a Tic-Tac-Toe game, this was my attempt at it at the time!
+
+The site is made with:
+
+- [React](https://reactjs.org).
+- [Styled-Components](https://styled-components.com/).
+
+The website can be visited [here](https://royeden.github.io/react_tic-tac-toe/).
+
+The source code can be viewed [here](https://github.com/royeden/react_tic-tac-toe).
+
+</div>

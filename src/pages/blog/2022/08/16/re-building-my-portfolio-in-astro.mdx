@@ -1,0 +1,132 @@
+---
+layout: "~layouts/BlogPostLayout.astro"
+draft: false
+
+date: "8/16/2022"
+description: "Why I choose this framework above everything else right now..."
+image: "/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png"
+tags:
+  [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "Markdown",
+    "MDX",
+    "Svelte",
+    "Astro",
+    "TailwindCSS",
+    "Accessibility",
+    "Art",
+    "Design",
+    "Open Source",
+    "SSR",
+  ]
+title: "Re-building my portfolio in Astro"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# Why Astro?
+
+<Image src={mainImage} format="webp" alt="The new homepage for my portfolio" />
+_A screenshot of my new portfolio_
+
+<div id="content">
+  ## Choosing a framework today is hard
+
+There's already a meme that says it:
+
+> _[another week, another JS framework](https://medium.com/tastejs-blog/yet-another-framework-syndrome-yafs-cf5f694ee070)_
+
+That is somewhat true: every day there's somebody out there that gets tired of writing yet another React project, seeing the performance tab, the amount of JS shipped to the client or how the hydration process works for the whole page and freak out and try their own hand at it.
+
+And that is a NECESSITY, there's something we got to recognize: A lot of the web today is built in React, but React isn't the forever framework.
+It has flaws, it has perks, it strikes some balances where it matters, and that's OK.
+
+So, here I am, almost all of my team is out of our job, and I find myself, getting ready to job hunt again, looking at my NextJS portfolio... the one that I wanted to but couldn't keep up to date because of work and university.
+
+I've had many issues with it, specially making it _while_ trying out TypeScript at the time and using everything incorrectly.
+It also didn't help that I was fetching info from the client instead of the server, and wasn't taking almost any advantage of NextJS.
+
+**And I think: Well, it's now or never... Time to rebuild my portfolio.**
+
+## What to focus on
+
+Recently, I've been reading, watching and following a lot of stuff that touches on website performance, specifically on how to leverage your JS on your site: HTML streaming (looking at you, MarkoJS, but React is thinking about it as well), resumable frameworks (Qwik.js) and the respectable, enjoyable and now deeply
+understood obsession of Ryan Carniato about shipping the
+minimal as JS possible with reactive frameworks (like Solid or Svelte, but also wanted to mention that Vue and React have considered similar approaches as well).
+
+_Also want to shout out `$mol`, I've read the articles for `$mol` translated from Russian to English and the approach to thinking about reactivity and implementing on top of it is absolutely interesting, and while I'm not the biggest fan of `OOP` and probably will never go for the `$mol` route, I appreciate it existing and the insight it provides_.
+
+### Why do **I** care about performance?
+
+Ever since I learned about web accessibility, I started to understand much better how necessary it is to **develop stuff that works correctly for everyone\***, regardless of the device they're using or their capability to see, listen, handle motion, etc. It also changed my life to know that keyboard navigation is a thing that should be implemented, as I'm often a keyboard navigator myself.
+
+\*_Or at least, the best we can do is TRY._
+
+### Why should **YOU** care about performance?
+
+Accessibility requires contemplating that not everybody is using the same Browser, OS, or device that you're using at the time of development / everyday life, and somebody may find themselves compromised if, for example, you are loading an important website and it takes a really long time to load because **all the JS is NECESSARY for the page to work**.
+
+## Choosing my framework for my portfolio
+
+### What I wanted
+
+For starters: What was I looking for in my new website?
+
+1. It should focus in performance and accessibility first.
+2. It should allow me to build a Projects showcase and a Blog easily.
+3. It should support Components, TypeScript, Tailwind and CSS modules easily, as those are things that I'm always using and in my opinion they provide nice DX.
+4. It should support be somewhat stable and easy to maintain up to date.
+5. I should still allow me to add some _visual stuff_ that entices your eyes, same with interacting with the site: it should feel _fluid_ and _fast_. If possible, I would like to have page transitions.
+6. Supporting prefetching / image optimization / many hosting providers are all nice perks.
+
+### What's the problem with current frameworks like Next / Nuxt / Svelte Kit?
+
+I feel like all of those are made to solve other types of problems, specifically with the libraries that their libraries support.
+
+Here's an overview:
+
+- Next: I thought about it, but I feel that Next has some specific use cases that exceed my needs for this project. It also uses React and Hydration, which isn't the fastest or most performant in some cases. Most libraries for animation in React are doing weird stuff under the hood and are pretty heavy, so you've got to be **REALLY SURE** that you want that for your site. I'm starting to learn this the hard way.
+
+- Nuxt: `nuxt3` still isn't out of the RC state for a long time. I want to try it out in the future because some of their approaches like auto-imports for almost everything seem pretty interesting for DX. Regarding animations, this framework supports stuff like page transitions easily and Vue has some nice base transition components that can be hacked to do some pretty cool stuff (_perhaps I will write about that in the future_).
+
+- Svelte Kit: Another framework that still isn't 1.0.0, and, as the others, feels like it's designed to solve other types of problems. Svelte also had its easy way to apply transitions and animations in a breeze and has first class support for them, but it lacks an official image optimization for the framework in comparison with Next / Nuxt.
+
+### So, why did I settle for Astro...
+
+...and not any of the other examples I've mentioned?
+
+Knowing this, I looked into:
+
+- Marko: I tried MarkoJS. It still doesn't have TypeScript support (I know it's coming, but I needed to build my site at the time, and I wasn't going to wait). It didn't have what I was looking for in this case, and I would have to learn a completely new syntax for me (this isn't bad, the same happened to me when I had to learn Vue or Svelte). It also doesn't have many libraries to hook into to apply some of the stuff I wished for.
+
+- Qwik: Qwik is not yet looking into a stable version 1.0.0, but it looks interesting enough, and I will definitively be trying it out in the future.
+
+- Solid-Start: SolidJS is also something I'm looking into, but their Solid-Start framework isn't ready for production (or documented) either (but I will also try it in the future because I'm dying to try solid).
+
+### Astro
+
+And then I found Astro and saw that they were in `1.0.x-rc`, making fixes every day towards a `1.0.x`, with an easy syntax to follow if you know React, TypeScript support, plugins to support Tailwind, Image Optimizations, MDX support (that was a plus) and the amount of deployment host adapters they had.
+
+I also loved their concept of _Bring Your Own Framework, we will handle the rest_, as I was looking into an interactive part I wished to code in Svelte or Vue, but that would still render the HTML in the server and just hydrate the _Islands_ that used that framework's JS.
+
+So, I chose that, installed all the necessary dependencies for my integrations and started building. I also picked Svelte to build my only complex interactive component (as it's lighter than Vue), and the rest was done with TypeScript and native DOM manipulation.
+
+The only additional library I used was [`@dogstudio/highway`](https://highway.js.org/), a lightweight page transitions library that lacks TypeScript support and is in maintenance mode, so it's currently the only thing I'm looking into replacing, and my sight is on doing it with [`@okiko/native`](https://native.okikio.dev/native/). Fixing `scripts` / `styles` not loading between page transitions was my biggest issue when building and debugging with this library.
+
+When I had almost half of the site built, Astro 1.0.0 finally came out, so I was finally working with a stable release. Yes, there are still some kinks to iron out, but it's working pretty well.
+
+In the end, this is what I've made. I also took some time to build a small helper cli to simplify making posts to Projects or Blog.
+
+I'm still gonna be fixing some small issues or approaches if something nicer comes my way, but this is my portfolio site for now, feel free to [explore it](/) 😊.
+
+</div>

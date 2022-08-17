@@ -1,0 +1,74 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "Mon Jul 04 2022"
+description: "A project that uses dithered layers and transparency to compose an image."
+image: "/posts/projects/2022/07/04/layered-dithering/layered-dithering.png"
+tags:
+  [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "NextJS",
+    "Framer-Motion",
+    "Radix UI",
+    "image-q",
+    "TailwindCSS",
+    "Accessibility",
+    "Art",
+    "Design",
+    "Open Source",
+  ]
+title: "Layered Dithering"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2022/07/04/layered-dithering/layered-dithering.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# Layered Dithering
+
+## A project that uses dithered layers and transparency to compose an image
+
+<SmartLink class="block" href="https://layered-dithering.vercel.app/">
+  <Image src={mainImage} alt="An image showcasing the web app" />
+</SmartLink>
+
+<div id="content">
+  ### About
+  _(This project is still under development)_
+
+This is one of my latest projects!
+
+I was investing some time to learn about image processing, and I stumbled across the concept of _image dithering_. That lead me to a bunch of articles talking about it, as well as some very cool apps that would allow you to do this process.
+
+While testing with those apps, I began to have some ideas of using this process on different layers and with alpha channels, to generate some interesting pixel masks... And that's how this idea was born.
+
+This project was originally written in Svelte, but I had to switch to NextJS because I ran into issues when implementing drag &amp; drop on custom components and I knew Framer Motion already had solutions for this.
+
+I'm still trying to upgrade performance and remake the UI so it feels nicer to use, and I'm considering switching from NextJS to something even simpler and lighter to increase performance, as well as trying out some `OffscreenCanvas` to run the app in WebWorkers.
+
+The site is made with:
+
+- [NextJS](https://nextjs.org).
+- [React](https://reactjs.org).
+- [Radix UI](https://reactjs.org).
+- [TailwindCSS](https://tailwindcss.com/).
+- [TailwindCSS-Radix](https://tailwindcss-radix.vercel.app/).
+- [TypeScript](https://typescriptlang.org/).
+- [Framer Motion](https://www.framer.com/docs/).
+- [Vercel (Hosting)](https://vercel.com/).
+- A fork of [React Colorful](https://omgovich.github.io/react-colorful/) with all the latest changes that weren't merged &amp; accessibility fixes.
+- Web Canvas API.
+
+The website can be visited [here](https://layered-dithering.vercel.app/).
+
+The source code can be viewed [here](https://github.com/royeden/layered-dithering).
+
+</div>

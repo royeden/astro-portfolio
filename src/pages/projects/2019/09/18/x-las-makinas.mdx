@@ -1,0 +1,69 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "9/18/2019"
+description: "A simple text scrambler made in a couple of hours intended to use for creating interesting texts."
+image: "/posts/projects/2019/09/18/x-las-makinas/x-las-makinas.png"
+tags: ["HTML", "CSS", "JavaScript", "Art", "Open Source"]
+title: "X Las Makinas"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2019/09/18/x-las-makinas/x-las-makinas.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# X Las Makinas
+
+## A simple text scrambler made in a couple of hours intended to use for creating interesting texts via repetition
+
+<SmartLink class="block" href="https://x-las-makinas.netlify.app/">
+  <Image src={mainImage} format="webp" alt="An image showcasing the website" />
+</SmartLink>
+
+<div id="content">
+  ### About
+
+This app was made with a script that was coded in around an hour in class. It breaks up words via repetition.
+
+An example for this would be the source of this file, that could produce the following result:
+
+```
+  About This app
+  app was
+  coded in around an hour
+  in class. It breaks up
+  words via repetition. An example
+  could produce the following result: The site
+  a
+  could produce the following result:
+  The site is made in
+  here. The source code can be
+  viewed here.
+  this would
+  It
+  produce the
+  viewed here.
+  website can
+  this
+  would
+  source
+  and
+  JavaScript.
+  visited
+  The
+  code
+```
+
+The site is made in HTML, CSS and JavaScript.
+
+The website can be visited [here](https://x-las-makinas.netlify.app/).
+
+The source code can be viewed [here](https://github.com/royeden/x-las-makinas).
+
+</div>

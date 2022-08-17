@@ -1,0 +1,44 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "Wed Mar 27 2019"
+description: "freeCodeCamp's Simon Game Project made in React."
+image: "/posts/projects/2019/03/27/react-simon/react-simon.png"
+tags: ["JavaScript", "React", "Styled Components", "Animation", "Open Source"]
+title: "React Simon"
+---
+
+import { Image } from "@astrojs/image/components";
+import LazyImage from "~components/Base/LazyImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+import mainImage from "~posts/projects/2019/03/27/react-simon/react-simon.png";
+
+export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+
+# React Simon
+
+## freeCodeCamp's Simon Game Project made in React.
+
+<SmartLink class="block" href="https://react-simon.netlify.app/">
+  <Image src={mainImage} alt="A showcase of the webapp" />
+</SmartLink>
+
+<div id="content">
+  ### About
+  [freeCodeCamp](https://freecodecamp.org)'s currriculum included a challenge to build a Simon game, this was my attempt at it at the time!
+
+I believe most of the design was adapted from somebody else's at the time, but I don't remember who to give credit 😢.
+
+The site is made with:
+
+- [React](https://reactjs.org).
+- [Styled-Components](https://styled-components.com/).
+
+The website can be visited [here](https://react-simon.netlify.app/).
+
+The source code can be viewed [here](https://github.com/royeden/react-simon).
+
+</div>

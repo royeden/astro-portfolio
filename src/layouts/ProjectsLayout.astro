@@ -1,0 +1,13 @@
+---
+import PostLayout, { Props as PostLayoutProps } from "./PostLayout.astro";
+
+export interface Props {
+  content: PostLayoutProps;
+}
+
+const { content } = Astro.props as Props;
+---
+
+<PostLayout {...content} layout="Blog">
+  <slot />
+</PostLayout>

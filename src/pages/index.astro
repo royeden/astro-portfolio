@@ -1,0 +1,54 @@
+---
+import { Image } from "@astrojs/image/components";
+import PageTransition from "~components/Base/PageTransition.astro";
+import TextRegular from "~components/Base/TextRegular.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+import MainLayout from "~layouts/MainLayout.astro";
+
+// TODO export into different components to do some crazy css stunts & use a framework that does it on mount/update. This is currently SSR once because it's static
+const PHRASES = [
+  "Welcome to my portfolio, how may I help you?",
+  "Oh, how beautiful are the stars?",
+  "Some experts say you'll have fun exploring this site...",
+  "This site is still enjoyable without JS!",
+];
+const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
+
+import me from "~posts/me.png";
+---
+
+<MainLayout
+  head={{
+    image: me,
+    description: "Roy Eden: Developer, Musician, and Artist...",
+    pageType: "Homepage",
+    title: "Roy Eden - Home",
+    url: "https://",
+  }}
+>
+  <PageTransition>
+    <div class="flex flex-col items-center pt-8 w-full">
+      <div
+        class="bg-white rounded-full aspect-square md:w-full w-60 md:max-w-sm lg:max-w-md"
+      >
+        <Image
+          height={448}
+          width={448}
+          class="rounded-full motion-safe:animate-gradient rainbow-gradient"
+          format="webp"
+          src={me}
+          alt="A picture of me looking at the camera"
+        />
+      </div>
+      <div class="w-full space-y-2 px-2 text-center">
+        <TextTitle class="w-full h-full">
+          <h1>Roy Eden</h1>
+          <p>Full-Stack Developer</p>
+        </TextTitle>
+        <TextRegular class="px-2">
+          <p>{phrase}</p>
+        </TextRegular>
+      </div>
+    </div>
+  </PageTransition>
+</MainLayout>
