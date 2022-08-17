@@ -10,7 +10,9 @@ export interface Props {
   pageType: string;
 }
 
-const { url = import.meta.env.SITE, image = `${import.meta.env.SITE}/assets/me.png`, ...props} = Astro.props as Props;
+const site = import.meta.env.SITE as string;
+
+const { url = site, image = `${(site.endsWith("/") ? site.slice(0, -1) : site)}/assets/me.png`, ...props} = Astro.props as Props;
 ---
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />

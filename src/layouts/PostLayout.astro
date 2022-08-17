@@ -10,13 +10,15 @@ export type Props = (Post & MarkdownContent) & {
   layout: "Blog" | "Projects";
 };
 
+const site = import.meta.env.SITE as string;
+
 const { image, description, title, url, tags, layout } = Astro.props as Props;
 ---
 
 <!-- TODO add content tables -->
 <MainLayout
   head={{
-    image: image ? `${import.meta.env.SITE}${image}` : undefined,
+    image: image ? `${site.endsWith("/") ? site.slice(0, -1) : site}${image}` : undefined,
     description: description ?? "",
     pageType: "Article",
     title: `Roy Eden - ${layout} - ${title}`,
