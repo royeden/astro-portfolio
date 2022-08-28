@@ -1,0 +1,118 @@
+---
+---
+
+<>
+  <canvas id="particles-split-vertical" class="motion-reduce:hidden"></canvas>  
+</>
+
+<script>
+  import { COLORS } from "~constants/colors";
+  import { REDUCED_MOTION } from "~constants/mediaQueries";
+  const canvas = document.querySelector("#particles-split-vertical") as HTMLCanvasElement;
+
+  if (!REDUCED_MOTION.matches && canvas) {
+    class Star {
+      color: number;
+      x: number;
+      y: number;
+      z: number;
+      xPrev: number;
+      yPrev: number;
+      time = Date.now();
+      constructor(x: number, y: number, z: number) {
+        this.color = Math.floor(Math.random() * COLORS.length);
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.xPrev = x;
+        this.yPrev = y;
+      }
+
+      update(width: number, height: number, speed: number) {
+        const current = Date.now();
+        const delta = current - this.time;
+        this.time = current;
+        this.xPrev = this.x;
+        this.yPrev = this.y;
+        this.z += speed * 0.125;
+        this.x += this.x * (speed * 0.0225) * this.z * delta;
+        this.y += this.y * (speed * 0.0225) * this.z * Math.cos(delta);
+        if (
+          this.x > width / 2 ||
+          this.x < -width / 2 ||
+          this.y > height / 2 ||
+          this.y < -height / 2
+        ) {
+          this.x = Math.random() * width - width / 2;
+          this.y = Math.random() * height - height / 2;
+          this.xPrev = this.x;
+          this.yPrev = this.y;
+          this.z = 0;
+        }
+      }
+
+      draw(ctx: CanvasRenderingContext2D) {
+        ctx.lineWidth = this.z;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.xPrev, this.yPrev);
+        ctx.stroke();
+      }
+    }
+
+    let stars = [];
+    let rafId;
+
+    const canvas = document.querySelector("#particles-split-vertical") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d");
+
+    const container = (document.querySelector("#particles-split-vertical") as HTMLElement).parentElement;
+    const resizeObserver = new ResizeObserver(setup);
+    resizeObserver.observe(container);
+
+    function setup() {
+      const amount = Math.min(
+        Math.floor(
+          Math.max(window.innerWidth, window.innerHeight) /
+            devicePixelRatio /
+            100
+        ) * 100,
+        800
+      );
+
+      stars = Array.from({ length: amount }, () => new Star(0, 0, 0));
+      rafId && cancelAnimationFrame(rafId);
+      const { clientWidth: width, clientHeight: height } = container;
+
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.scale(dpr, dpr);
+
+      for (const star of stars) {
+        star.x = Math.random() * width - width / 2;
+        star.y = Math.random() * height - height / 2;
+        star.z = 0;
+      }
+
+      ctx.translate(width / 2, height / 2);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function frame(n) {
+      const { clientWidth: width, clientHeight: height } = container;
+
+      for (const star of stars) {
+        star.update(width, height, 0.05);
+        ctx.strokeStyle = COLORS[star.color];
+        star.draw(ctx);
+      }
+
+      ctx.fillRect(-width / 2, -height / 2, width, height);
+      rafId = requestAnimationFrame(frame);
+    }
+  }
+</script>

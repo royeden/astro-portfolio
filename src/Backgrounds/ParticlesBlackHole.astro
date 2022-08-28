@@ -1,0 +1,117 @@
+---
+---
+
+<>
+  <canvas id="particles-black-hole" class="motion-reduce:hidden"></canvas>
+</>
+
+<script>
+  import { COLORS } from "~constants/colors";
+  import { REDUCED_MOTION } from "~constants/mediaQueries";
+
+  const canvas = document.querySelector(
+    "#particles-black-hole"
+  ) as HTMLCanvasElement;
+
+  if (!REDUCED_MOTION.matches && canvas) {
+    class Star {
+      color: number;
+      x: number;
+      y: number;
+      xPrev: number;
+      yPrev: number;
+      angle: number;
+      radius: number;
+      distance: number;
+      time = Date.now();
+      constructor(x: number, y: number, distance: number) {
+        this.color = Math.floor(Math.random() * COLORS.length);
+        this.angle = Math.random() * Math.PI * 2;
+        this.distance = Math.random() * distance + 150;
+        this.radius = (1 / this.distance) * 150 + Math.random() + 1;
+        this.xPrev = x;
+        this.yPrev = y;
+        this.x = x + this.distance * Math.cos(this.angle);
+        this.y = y + this.distance * Math.sin(this.angle);
+      }
+
+      update(speed: number) {
+        const current = Date.now();
+        const delta = current - this.time;
+        this.time = current;
+        this.angle +=
+          speed * delta * ((this.radius * 3) / this.distance) -
+          Math.random() / this.distance;
+        this.x = this.xPrev + this.distance * Math.cos(this.angle);
+        this.y = this.yPrev + this.distance * Math.sin(this.angle);
+      }
+
+      draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = COLORS[this.color].replace(
+          "1)",
+          `${(1/this.distance * 400).toFixed(2)})`
+        );
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+
+    let stars = [];
+    let rafId;
+
+    const ctx = canvas.getContext("2d");
+
+    const container = (
+      document.querySelector("#particles-black-hole") as HTMLElement
+    ).parentElement;
+    const resizeObserver = new ResizeObserver(setup);
+    resizeObserver.observe(container);
+
+    function setup() {
+      const amount = Math.min(
+        Math.floor(
+          Math.max(window.innerWidth, window.innerHeight) /
+            devicePixelRatio /
+            100
+        ) * 100,
+        1600
+      );
+
+      stars = Array.from(
+        { length: amount },
+        () =>
+          new Star(
+            window.innerWidth / 2,
+            window.innerHeight / 2,
+            Math.max(window.innerWidth, window.innerHeight) / 2
+          )
+      );
+      rafId && cancelAnimationFrame(rafId);
+      const { clientWidth: width, clientHeight: height } = container;
+
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.scale(dpr, dpr);
+
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function frame(n) {
+      const { clientWidth: width, clientHeight: height } = container;
+
+      for (const star of stars) {
+        star.update(0.05);
+        star.draw(ctx);
+      }
+
+      ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
+      ctx.fillRect(0, 0, width, height);
+      rafId = requestAnimationFrame(frame);
+    }
+  }
+</script>
