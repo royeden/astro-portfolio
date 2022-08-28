@@ -19,6 +19,7 @@
     "@astrojs/image": "^0.3.6",
     "@astrojs/mdx": "^0.10.2",
     "@astrojs/prefetch": "^0.0.7",
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@astrojs/vercel": "^1.0.1",
