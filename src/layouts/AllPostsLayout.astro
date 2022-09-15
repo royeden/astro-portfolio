@@ -79,7 +79,7 @@ const title = type.substring(0, 1).toLocaleUpperCase() + type.substring(1);
     <SkipTo target="navigation">Skip to navigation</SkipTo>
     <div class="flex flex-col items-center px-4 pt-8 space-y-2">
       <TextTitle>
-        <h1>{title}</h1>
+        {title}
       </TextTitle>
       <slot />
       <SearchGrid
