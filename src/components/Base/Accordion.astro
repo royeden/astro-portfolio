@@ -11,7 +11,7 @@ const { classList, items, ...props } = normalizeAstroClassListProps(
 );
 ---
 
-<details {...props} class:list={[classList]}>
+<details {...props} class:list={classList}>
   <summary class="group cursor-pointer focus:outline-none py-2">
     <span
       class="font-bold rounded-md transition duration-300 group-focus-visible:ring group-focus-visible:ring-white group-focus-visible:ring-opacity-80 group-focus-visible:group-hover:ring-opacity-100 w-full p-0.5"
