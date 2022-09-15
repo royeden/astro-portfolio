@@ -16,6 +16,7 @@ export interface SmartLinkProps {
 export interface SmartLinkComputedProps {
   href: SmartLinkPrimitive["parsedURL"];
   "data-contact": SmartLinkPrimitive["obfuscatedContact"];
+  "data-router-disabled": boolean;
   "aria-label": SmartLinkPrimitive["ariaLabel"];
   rel: SmartLinkPrimitive["rel"];
   target?: "_blank";
@@ -81,6 +82,7 @@ export function getSmartLinkProps({
   return {
     href: parsedURL,
     "data-contact": obfuscatedContact,
+    "data-router-disabled": !!obfuscatedContact,
     "aria-label": ariaLabel,
     rel,
     target: isExternal ? "_blank" : undefined,
