@@ -69,47 +69,51 @@ const {
             class="flex flex-col items-center pb-4 space-y-4"
           >
             <div class="flex flex-wrap justify-center">
-              {[
-                { href: "", title: "Home" },
-                { href: "about", title: "About" },
-                { href: "blog", title: "Blog" },
-                { href: "projects", title: "Projects" },
-              ].map(({ href, title }) => (
-                <SmartLink
-                  class:list="mx-4 mb-4 w-full border-2 border-white/50 bg-neutral-900/50 px-4 py-2 text-center font-bold capitalize tracking-wide text-white hover:border-white hover:bg-neutral-800 focus:bg-neutral-800 motion-safe:will-change-transform motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 md:w-36"
-                  href={`/${href}`}
-                  title={title}
-                >
-                  {title}
-                </SmartLink>
-              ))}
+              {
+                [
+                  { href: "", title: "Home" },
+                  { href: "about", title: "About" },
+                  { href: "blog", title: "Blog" },
+                  { href: "projects", title: "Projects" },
+                ].map(({ href, title }) => (
+                  <SmartLink
+                    class:list="mx-4 mb-4 w-full border-2 border-white/50 bg-neutral-900/50 px-4 py-2 text-center font-bold capitalize tracking-wide text-white hover:border-white hover:bg-neutral-800 focus:bg-neutral-800 motion-safe:will-change-transform motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 md:w-36"
+                    href={`/${href}`}
+                    title={title}
+                  >
+                    {title}
+                  </SmartLink>
+                ))
+              }
             </div>
             <div class="flex justify-center">
-              {[
-                {
-                  icon: "octicon:mark-github-16",
-                  href: "https://github.com/royeden",
-                  title: "Visit my Github profile",
-                },
-                {
-                  icon: "uiw:linkedin",
-                  href: "https://www.linkedin.com/in/roy-eden/",
-                  title: "Visit my linkedin",
-                },
-                {
-                  icon: "heroicons-outline:at-symbol",
-                  href: "mailto:roy.ede@gmail.com",
-                  title: "Send me an email",
-                },
-              ].map(({ icon, href, title }) => (
-                <SmartLink
-                  class="mx-4 p-2 text-neutral-300 hover:text-white focus:text-white motion-safe:will-change-transform motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110"
-                  href={href}
-                  title={title}
-                >
-                  {<Icon name={icon} class="h-8 w-8" />}
-                </SmartLink>
-              ))}
+              {
+                [
+                  {
+                    icon: "octicon:mark-github-16",
+                    href: "https://github.com/royeden",
+                    title: "Visit my Github profile",
+                  },
+                  {
+                    icon: "uiw:linkedin",
+                    href: "https://www.linkedin.com/in/roy-eden/",
+                    title: "Visit my linkedin",
+                  },
+                  {
+                    icon: "heroicons-outline:at-symbol",
+                    href: "mailto:roy.ede@gmail.com",
+                    title: "Send me an email",
+                  },
+                ].map(({ icon, href, title }) => (
+                  <SmartLink
+                    class="mx-4 p-2 text-neutral-300 hover:text-white focus:text-white motion-safe:will-change-transform motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110"
+                    href={href}
+                    title={title}
+                  >
+                    {<Icon name={icon} class="h-8 w-8" />}
+                  </SmartLink>
+                ))
+              }
             </div>
           </nav>
           <footer class="text-white text-center space-y-1">
