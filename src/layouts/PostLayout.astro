@@ -18,7 +18,9 @@ const { image, description, title, url, tags, layout } = Astro.props as Props;
 <!-- TODO add content tables -->
 <MainLayout
   head={{
-    image: image ? `${site.endsWith("/") ? site.slice(0, -1) : site}${image}` : undefined,
+    image: image
+      ? `${site.endsWith("/") ? site.slice(0, -1) : site}${image}`
+      : undefined,
     description: description ?? "",
     pageType: "article",
     title: `Roy Eden - ${layout} - ${title}`,

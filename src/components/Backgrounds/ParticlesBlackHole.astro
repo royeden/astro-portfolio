@@ -49,7 +49,7 @@
       draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = COLORS[this.color].replace(
           "1)",
-          `${(1/this.distance * 400).toFixed(2)})`
+          `${((1 / this.distance) * 400).toFixed(2)})`
         );
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);

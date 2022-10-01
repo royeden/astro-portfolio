@@ -12,13 +12,25 @@ export interface Props {
 
 const site = import.meta.env.SITE as string;
 
-const { url = Astro.url.toString(), image = `${(site.endsWith("/") ? site.slice(0, -1) : site)}/assets/me.png`, pageType = "website", ...props} = Astro.props as Props;
+const {
+  url = Astro.url.toString(),
+  image = `${site.endsWith("/") ? site.slice(0, -1) : site}/assets/me.png`,
+  pageType = "website",
+  ...props
+} = Astro.props as Props;
 ---
 
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src 'self' https://*; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<SEO siteName="Roy Eden" twitterHandle="RoyEde" pageType={pageType} url={url} image={image} {...props} />
+<SEO
+  siteName="Roy Eden"
+  twitterHandle="RoyEde"
+  pageType={pageType}
+  url={url}
+  image={image}
+  {...props}
+/>
 
 <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
 

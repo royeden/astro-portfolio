@@ -2,13 +2,15 @@
 ---
 
 <>
-  <canvas id="particles-split-vertical" class="motion-reduce:hidden"></canvas>  
+  <canvas id="particles-split-vertical" class="motion-reduce:hidden"></canvas>
 </>
 
 <script>
   import { COLORS } from "~constants/colors";
   import { REDUCED_MOTION } from "~constants/mediaQueries";
-  const canvas = document.querySelector("#particles-split-vertical") as HTMLCanvasElement;
+  const canvas = document.querySelector(
+    "#particles-split-vertical"
+  ) as HTMLCanvasElement;
 
   if (!REDUCED_MOTION.matches && canvas) {
     class Star {
@@ -63,10 +65,14 @@
     let stars = [];
     let rafId;
 
-    const canvas = document.querySelector("#particles-split-vertical") as HTMLCanvasElement;
+    const canvas = document.querySelector(
+      "#particles-split-vertical"
+    ) as HTMLCanvasElement;
     const ctx = canvas.getContext("2d");
 
-    const container = (document.querySelector("#particles-split-vertical") as HTMLElement).parentElement;
+    const container = (
+      document.querySelector("#particles-split-vertical") as HTMLElement
+    ).parentElement;
     const resizeObserver = new ResizeObserver(setup);
     resizeObserver.observe(container);
 

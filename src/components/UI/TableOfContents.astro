@@ -23,13 +23,15 @@ const { classList, items, ...props } = normalizeAstroClassListProps(
   class:list={[classList, "divide-y divide-neutral-800 max-w-lg w-full"]}
 >
   <TextSubitle class="p-3">Contents</TextSubitle>
-  {items.map(({ title, id }) => (
-    <span class="transition-colors duration-300 hover:bg-white/5">
-      <SmartLink title={title} class="block w-full" href={`#${id}`}>
-        <TextHighlight class="block w-full p-3 underline">
-          {title}
-        </TextHighlight>
-      </SmartLink>
-    </span>
-  ))}
+  {
+    items.map(({ title, id }) => (
+      <span class="transition-colors duration-300 hover:bg-white/5">
+        <SmartLink title={title} class="block w-full" href={`#${id}`}>
+          <TextHighlight class="block w-full p-3 underline">
+            {title}
+          </TextHighlight>
+        </SmartLink>
+      </span>
+    ))
+  }
 </Card>
