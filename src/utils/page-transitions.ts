@@ -7,18 +7,26 @@ export const TRANSITION_PARAM_KEY = "transition";
 export function pageTransitionIn() {
   const search = new URLSearchParams(window.location.search);
   if (search.get(TRANSITION_PARAM_KEY)) {
-    main.animate(
-      [
-        { opacity: 0, height: 0 },
-        { opacity: 0, height: `${main.scrollHeight}px` },
-        { opacity: 1, height: "auto" },
-      ],
-      {
-        duration: Math.min(Math.max(500 * (main.scrollHeight / 2500), 500), 800),
-        easing: "ease-in",
-        fill: "forwards",
-      }
-    );
+    if (REDUCED_MOTION) {
+      main.style.height = "auto";
+      main.style.opacity = "1";
+    } else {
+      main.animate(
+        [
+          { opacity: 0, height: 0 },
+          { opacity: 0, height: `${main.scrollHeight}px` },
+          { opacity: 1, height: "auto" },
+        ],
+        {
+          duration: Math.min(
+            Math.max(500 * (main.scrollHeight / 2500), 500),
+            800
+          ),
+          easing: "ease-in",
+          fill: "forwards",
+        }
+      );
+    }
   }
 }
 
@@ -26,7 +34,7 @@ let pageOutAnimation: Animation | undefined = undefined;
 
 function pageTransitionOut(event: MouseEvent) {
   if (!REDUCED_MOTION) {
-    const { href, pathname } = (event.currentTarget as HTMLAnchorElement);
+    const { href, pathname } = event.currentTarget as HTMLAnchorElement;
 
     event.preventDefault();
 
@@ -50,12 +58,13 @@ function pageTransitionOut(event: MouseEvent) {
         }
       );
 
-      pageOutAnimation.onfinish = () => (window.location.href = `${href}?${TRANSITION_PARAM_KEY}=true`);
+      pageOutAnimation.onfinish = () =>
+        (window.location.href = `${href}?${TRANSITION_PARAM_KEY}=true`);
     }
   }
 }
 
-export function getAnchorLinks() {
+export function getTransitionLinks() {
   return (
     Array.from(
       document.querySelectorAll("a[href]:not([target])")
@@ -69,14 +78,10 @@ export function getAnchorLinks() {
   );
 }
 
-export function addPageTransitionLinks(links: HTMLAnchorElement[]) {
-  links.forEach((link: HTMLAnchorElement) =>
-    link.addEventListener("click", pageTransitionOut)
-  );
+export function addPageTransitionLinks(link: HTMLAnchorElement) {
+  link.addEventListener("click", pageTransitionOut);
 }
 
-export function removePageTransitionLinks(links: HTMLAnchorElement[]) {
-  links.forEach((link: HTMLAnchorElement) =>
-    link.removeEventListener("click", pageTransitionOut)
-  );
+export function removePageTransitionLinks(link: HTMLAnchorElement) {
+  link.removeEventListener("click", pageTransitionOut);
 }

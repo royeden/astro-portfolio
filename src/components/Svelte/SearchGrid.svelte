@@ -7,6 +7,7 @@
     addPageTransitionLinks,
     removePageTransitionLinks,
   } from "~utils/page-transitions";
+  import { REDUCED_MOTION } from "~constants/mediaQueries";
 
   interface Item extends Post {
     href: string;
@@ -84,75 +85,71 @@
 
   {#if filteredItems.length > 0}
     <div
-      class="container grid h-full max-w-xs gap-2 sm:max-w-full sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"
+      class="container grid h-full max-w-xs gap-2 sm:max-w-full sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
     >
       {#each filteredItems as item (item)}
         <a
-          class="group relative h-60 w-full max-w-xs overflow-hidden rounded-lg border-2 border-neutral-800 transition duration-300 hover:border-white focus:border-white focus:outline-none focus-visible:ring focus-visible:ring-white"
+          class="group flex w-full flex-col justify-between space-y-2 overflow-hidden rounded-md border-2 border-neutral-800 pb-2 transition duration-300 hover:border-white focus:border-white focus:outline-none focus-visible:ring focus-visible:ring-white"
           href={item.href}
           in:fade={{
-            duration,
+            duration: REDUCED_MOTION ? 0 : duration,
           }}
           out:fade={{
             duration: 0,
           }}
           animate:flip={{
             delay: 100,
-            duration,
+            duration: REDUCED_MOTION ? 0 : duration,
           }}
-          on:introend={(event) => addPageTransitionLinks([event.currentTarget])}
+          on:introend={(event) => addPageTransitionLinks(event.currentTarget)}
           on:outrostart={(event) =>
-            removePageTransitionLinks([event.currentTarget])}
+            removePageTransitionLinks(event.currentTarget)}
         >
           {#if item.image}
             <img
               src={item.image}
               alt={item.title}
-              class="absolute inset-0 z-0 h-full w-full bg-neutral-900/50 object-cover"
+              class="aspect-video w-full bg-neutral-900/50 object-cover"
               loading="lazy"
             />
           {:else}
             <div
-              class="flex h-full w-full items-center justify-center text-center text-xl font-bold"
+              class="flex aspect-video h-full w-full items-center justify-center text-center text-xl font-bold"
             >
               <p>{item.title}</p>
             </div>
           {/if}
-          <!-- TODO revise this -->
           <div
-            class="absolute inset-0 bg-black/20 opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"
-          />
-          <div
-            class="absolute inset-0 z-10 flex h-full w-full flex-col items-center space-y-2 bg-black/50 p-4"
+            class="flex h-full w-full flex-col items-center space-y-2 bg-black/50 p-4"
             title={item.description}
           >
             <header class="text-center text-lg font-bold">
               {item.title}
             </header>
             <div
-              class="flex h-full translate-y-full flex-col {item.description
+              class="flex h-full flex-col {item.description
                 ? 'justify-between'
-                : 'justify-end'} opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100"
+                : 'justify-end'}"
             >
               {#if item.description}
-                <p class="line-clamp-4">
+                <p class="line-clamp-6">
                   {item.description}
                 </p>
               {/if}
-              <div class="flex w-full items-center justify-center">
-                <p
-                  class="rounded-md border-2 border-white/50 px-3 py-1 text-white/75 transition-colors duration-500 hover:border-white hover:text-white group-focus:border-white group-focus:text-white"
-                >
-                  {cta}
-                </p>
-              </div>
             </div>
+          </div>
+          <div class="flex w-full items-center justify-center">
+            <p
+              class="rounded-md border-2 border-white/75 px-3 py-1 text-white/75 opacity-0 transition duration-300 hover:border-white hover:bg-white/5 hover:text-white group-hover:opacity-100 group-focus:border-white group-focus:text-white group-focus-visible:opacity-100"
+            >
+              {cta}
+            </p>
           </div>
         </a>
       {/each}
     </div>
   {:else}
-    <div in:fade={{ duration: 300 }}>
+    <div in:fade={{ duration: REDUCED_MOTION ? 0 : 300 }}>
       <p>No results were found, maybe try again later...</p>
       <button type="reset" on:click={() => (query = "")}>Clear search</button>
     </div>
