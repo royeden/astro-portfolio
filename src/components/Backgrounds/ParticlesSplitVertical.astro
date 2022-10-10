@@ -63,7 +63,7 @@
     }
 
     let stars = [];
-    let rafId;
+    let rafId: number; 
 
     const canvas = document.querySelector(
       "#particles-split-vertical"
@@ -108,7 +108,7 @@
       rafId = requestAnimationFrame(frame);
     }
 
-    function frame(n) {
+    function frame() {
       const { clientWidth: width, clientHeight: height } = container;
 
       for (const star of stars) {

@@ -59,7 +59,7 @@
     }
 
     let stars = [];
-    let rafId;
+    let rafId: number;
 
     const ctx = canvas.getContext("2d");
 
@@ -101,7 +101,7 @@
       rafId = requestAnimationFrame(frame);
     }
 
-    function frame(n) {
+    function frame() {
       const { clientWidth: width, clientHeight: height } = container;
 
       for (const star of stars) {
