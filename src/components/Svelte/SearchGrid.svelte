@@ -1,9 +1,9 @@
 <script lang="ts">
   // TODO implement custom transition so height collapses as well
-  import { beforeUpdate, tick } from "svelte";
   import { fade } from "svelte/transition";
   import { flip } from "svelte/animate";
   import { Post } from "~constants/posts";
+  import { addPageTransitionLinks, removePageTransitionLinks } from "~utils/page-transitions";
 
   interface Item extends Post {
     href: string;
@@ -52,15 +52,6 @@
       500
     );
   }
-
-  beforeUpdate(async () => {
-    await tick();
-    if (typeof window !== "undefined" && filteredItems.length) {
-      import("~utils/page-transitions").then((module) =>
-        module.setupPageTransitions()
-      );
-    }
-  });
 </script>
 
 <form
@@ -99,10 +90,15 @@
           in:fade={{
             duration,
           }}
+          out:fade={{
+            duration: 0,
+          }}
           animate:flip={{
             delay: 100,
             duration,
           }}
+          on:introend="{event => addPageTransitionLinks([event.currentTarget])}"
+          on:outrostart="{event => removePageTransitionLinks([event.currentTarget])}"
         >
           {#if item.image}
             <img

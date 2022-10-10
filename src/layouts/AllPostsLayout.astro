@@ -1,13 +1,11 @@
 ---
-// TODO generalize into a single layout
-import PageTransition from "~components/Base/PageTransition.astro";
 import SkipTo from "~components/Base/SkipTo.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 import SearchGrid from "~components/Svelte/SearchGrid.svelte";
 import MainLayout from "./MainLayout.astro";
 import { Post } from "~constants/posts";
 import { MDXInstance } from "astro";
-import { getImage } from "@astrojs/image";
+// import { getImage } from "@astrojs/image";
 
 export interface Props {
   cta: string;
@@ -75,20 +73,18 @@ const title = type.substring(0, 1).toLocaleUpperCase() + type.substring(1);
     title: `Roy Eden - Personal ${title}`,
   }}
 >
-  <PageTransition>
-    <SkipTo target="navigation">Skip to navigation</SkipTo>
-    <div class="flex flex-col items-center px-4 pt-8 space-y-2">
-      <TextTitle>
-        {title}
-      </TextTitle>
-      <slot />
-      <SearchGrid
-        cta={cta}
-        items={posts.map((post) => post)}
-        placeholder={placeholder}
-        query={query}
-        client:load
-      />
-    </div>
-  </PageTransition>
+  <SkipTo target="navigation">Skip to navigation</SkipTo>
+  <div class="flex flex-col items-center px-4 pt-8 space-y-2">
+    <TextTitle>
+      {title}
+    </TextTitle>
+    <slot />
+    <SearchGrid
+      cta={cta}
+      items={posts.map((post) => post)}
+      placeholder={placeholder}
+      query={query}
+      client:load
+    />
+  </div>
 </MainLayout>

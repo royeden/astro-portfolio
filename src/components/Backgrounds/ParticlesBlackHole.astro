@@ -13,7 +13,7 @@
     "#particles-black-hole"
   ) as HTMLCanvasElement;
 
-  if (!REDUCED_MOTION.matches && canvas) {
+  if (!REDUCED_MOTION && canvas) {
     class Star {
       color: number;
       x: number;
@@ -59,7 +59,7 @@
     }
 
     let stars = [];
-    let rafId;
+    let rafId: number;
 
     const ctx = canvas.getContext("2d");
 
@@ -101,7 +101,7 @@
       rafId = requestAnimationFrame(frame);
     }
 
-    function frame(n) {
+    function frame() {
       const { clientWidth: width, clientHeight: height } = container;
 
       for (const star of stars) {

@@ -1,7 +1,6 @@
 ---
 import { Image } from "@astrojs/image/components";
 // import LazyImage from "~components/Base/LazyImage.astro";
-import PageTransition from "~components/Base/PageTransition.astro";
 import TextRegular from "~components/Base/TextRegular.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 import MainLayout from "~layouts/MainLayout.astro";
@@ -25,36 +24,34 @@ const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
     title: "Roy Eden - Welcome to my portfolio!",
   }}
 >
-  <PageTransition>
-    <div class="flex flex-col items-center pt-8 w-full">
-      <div
-        class="bg-white rounded-full aspect-square md:w-full w-60 md:max-w-sm lg:max-w-md"
-      >
-        <Image
-          height={448}
-          width={448}
-          class="rounded-full motion-safe:animate-gradient rainbow-gradient"
-          format="webp"
-          src={me}
-          alt="A picture of me looking at the camera"
-        />
-        <!-- <LazyImage
-          height={448}
-          width={448}
-          class="rounded-full motion-safe:animate-gradient rainbow-gradient"
-          src="/assets/me.png"
-          alt="A picture of me looking at the camera"
-        /> -->
-      </div>
-      <div class="w-full space-y-2 px-2 text-center">
-        <TextTitle class="w-full h-full">
-          Roy Eden <br />
-          Full-Stack Developer
-        </TextTitle>
-        <TextRegular class="px-2">
-          <p>{phrase}</p>
-        </TextRegular>
-      </div>
+  <div class="flex flex-col items-center pt-8 w-full">
+    <div
+      class="bg-white rounded-full aspect-square md:w-full w-60 md:max-w-sm lg:max-w-md"
+    >
+      <Image
+        height={448}
+        width={448}
+        class="rounded-full motion-safe:animate-gradient rainbow-gradient"
+        format="webp"
+        src={me}
+        alt="A picture of me looking at the camera"
+      />
+      <!-- <LazyImage
+        height={448}
+        width={448}
+        class="rounded-full motion-safe:animate-gradient rainbow-gradient"
+        src="/assets/me.png"
+        alt="A picture of me looking at the camera"
+      /> -->
     </div>
-  </PageTransition>
+    <div class="w-full space-y-2 px-2 text-center">
+      <TextTitle class="w-full h-full">
+        Roy Eden <br />
+        Full-Stack Developer
+      </TextTitle>
+      <TextRegular class="px-2">
+        <p>{phrase}</p>
+      </TextRegular>
+    </div>
+  </div>
 </MainLayout>

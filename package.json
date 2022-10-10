@@ -45,8 +45,5 @@
     "slugify": "^1.6.5",
     "svelte": "^3.50.1",
     "yargs-parser": "^21.1.1"
-  },
-  "dependencies": {
-    "@dogstudio/highway": "^2.2.1"
   }
 }

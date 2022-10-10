@@ -1,5 +1,4 @@
 ---
-import PageTransition from "~components/Base/PageTransition.astro";
 import SkipTo from "~components/Base/SkipTo.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextRegular from "~components/Base/TextRegular.astro";
@@ -14,97 +13,93 @@ import MainLayout from "~layouts/MainLayout.astro";
     title: "Roy Eden - Credits",
   }}
 >
-  <PageTransition>
-    <SkipTo target="navigation">Skip to navigation</SkipTo>
-    <div class="flex flex-col items-center px-4 pt-8 space-y-4">
-      <TextTitle>Credits</TextTitle>
-      <section>
-        <TextRegular class="space-y-2">
-          <header>
-            <h2>This site is open source:</h2>
-          </header>
-          <p class="text-center">
-            <SmartLink href="https://github.com/royeden/astro-portfolio">
-              <TextHighlight class="underline">View the code</TextHighlight>
+  <SkipTo target="navigation">Skip to navigation</SkipTo>
+  <div class="flex flex-col items-center px-4 pt-8 space-y-4">
+    <TextTitle>Credits</TextTitle>
+    <section>
+      <TextRegular class="space-y-2">
+        <header>
+          <h2>This site is open source:</h2>
+        </header>
+        <p class="text-center">
+          <SmartLink href="https://github.com/royeden/astro-portfolio">
+            <TextHighlight class="underline">View the code</TextHighlight>
+          </SmartLink>
+        </p>
+      </TextRegular>
+    </section>
+    <section>
+      <TextRegular class="space-y-2 md:px-8">
+        <header>
+          <h2>
+            Some things on this site were either remixed or implemented from
+            other projects and adapted to work with this one:
+          </h2>
+        </header>
+        <ul class="list-disc space-y-2">
+          <li class="ml-4">
+            The Background animation of the splitting particles was a modified
+            script of
+            <SmartLink href="https://github.com/mhyfritz/astro-landing-page">
+              <TextHighlight class="underline">
+                this astro starter's background animation
+              </TextHighlight>
             </SmartLink>
-          </p>
-        </TextRegular>
-      </section>
-      <section>
-        <TextRegular class="space-y-2 md:px-8">
-          <header>
-            <h2>
-              Some things on this site were either remixed or implemented from
-              other projects and adapted to work with this one:
-            </h2>
-          </header>
-          <ul class="list-disc space-y-2">
-            <li class="ml-4">
-              The Background animation of the splitting particles was a modified
-              script of
-              <SmartLink href="https://github.com/mhyfritz/astro-landing-page">
-                <TextHighlight class="underline">
-                  this astro starter's background animation
-                </TextHighlight>
-              </SmartLink>
-              .
-            </li>
-            <li class="ml-4">
-              The Background animation of the black hole particles was a
-              modified script of
-              <SmartLink
-                href="https://codepen.io/piyushwalia/pen/JxMbMM?editors=0010"
-              >
-                <TextHighlight class="underline">this codepen</TextHighlight>
-              </SmartLink>
-              .
-            </li>
-            <li class="ml-4">
-              The grid filter was based from
-              <SmartLink
-                href="https://svelte.dev/repl/e0a87884733d4c7090fbc39d78c35341?version=3.31.2"
-              >
-                <TextHighlight class="underline"
-                  >this Svelte REPL
-                </TextHighlight>
-              </SmartLink>
-              .
-            </li>
-            <li class="ml-4">
-              The Accordion animation was ported to typescript from
-              <SmartLink
-                href="https://css-tricks.com/how-to-animate-the-details-element-using-waapi/"
-              >
-                <TextHighlight class="underline">
-                  this CSSTricks post
-                </TextHighlight>
-              </SmartLink>
-              .
-            </li>
-            <li class="ml-4">
-              My SmartLink component was adapted an ported to a generic TS
-              function primitive from
-              <SmartLink
-                href="https://github.com/JulianCataldo/web-garden/tree/develop/components/Link"
-              >
-                <TextHighlight class="underline">
-                  Julian Cataldo's Link component
-                </TextHighlight>
-              </SmartLink>
-              .
-            </li>
-            <li class="ml-4">
-              Projects & Blog Posts cards were based from
-              <SmartLink href="https://okikio.dev/#index">
-                <TextHighlight class="underline">
-                  Okiki Ojo's website
-                </TextHighlight>
-              </SmartLink>
-              .
-            </li>
-          </ul>
-        </TextRegular>
-      </section>
-    </div>
-  </PageTransition>
+            .
+          </li>
+          <li class="ml-4">
+            The Background animation of the black hole particles was a modified
+            script of
+            <SmartLink
+              href="https://codepen.io/piyushwalia/pen/JxMbMM?editors=0010"
+            >
+              <TextHighlight class="underline">this codepen</TextHighlight>
+            </SmartLink>
+            .
+          </li>
+          <li class="ml-4">
+            The grid filter was based from
+            <SmartLink
+              href="https://svelte.dev/repl/e0a87884733d4c7090fbc39d78c35341?version=3.31.2"
+            >
+              <TextHighlight class="underline">this Svelte REPL</TextHighlight>
+            </SmartLink>
+            .
+          </li>
+          <li class="ml-4">
+            The Accordion animation was ported to TypeScript from
+            <SmartLink
+              href="https://css-tricks.com/how-to-animate-the-details-element-using-waapi/"
+            >
+              <TextHighlight class="underline">
+                this CSSTricks post
+              </TextHighlight>
+            </SmartLink>
+            .
+          </li>
+          <li class="ml-4">
+            My SmartLink component was adapted an ported to a generic TS
+            function primitive from
+            <SmartLink
+              href="https://github.com/JulianCataldo/web-garden/tree/develop/components/Link"
+            >
+              <TextHighlight class="underline">
+                Julian Cataldo's Link component
+              </TextHighlight>
+            </SmartLink>
+            .
+          </li>
+          <li class="ml-4">
+            Projects & Blog Posts cards were based from
+            <SmartLink href="https://okikio.dev/#index">
+              <TextHighlight class="underline">
+                Okiki Ojo's website
+              </TextHighlight>
+            </SmartLink>
+            .
+          </li>
+        </ul>
+      </TextRegular>
+    </section>
+  </div>
 </MainLayout>

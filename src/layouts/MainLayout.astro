@@ -6,19 +6,20 @@ import LayoutBody from "~components/Layouts/LayoutBody.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import type { Props as LayoutHeadProps } from "~components/Layouts/LayoutHead.astro";
 import TextHighlight from "~components/UI/TextHighlight.astro";
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
 
 const year = new Date().getFullYear();
 
 export interface Props extends astroHTML.JSX.HtmlHTMLAttributes {
-  body?: Omit<astroHTML.JSX.HTMLAttributes, "class" | "class:list">;
+  body?: astroHTML.JSX.HTMLAttributes;
   bodyClass?: string;
-  bodyClassList?: astroHTML.JSX.HTMLAttributes["class:list"];
   head: LayoutHeadProps; // TODO auto resolve the url site with import.meta.env.SITE
+  mainClass?: string;
 }
 const {
-  body = {},
+  body,
   bodyClass = "",
-  bodyClassList = "",
+  mainClass = "",
   head,
   ...props
 } = Astro.props as Props;
@@ -28,8 +29,7 @@ const {
   {...props}
   lang="en"
   class:list={[
-    props.class,
-    props["class:list"],
+    normalizeAstroClassListProps(props).classList,
     "h-full motion-safe:scroll-smooth scrollbar scrollbar-thin scrollbar-track-black/20 scrollbar-thumb-pink-500",
   ]}
 >
@@ -44,99 +44,106 @@ const {
         .show-no-js {
           display: unset;
         }
+        /* Disable page transitions */
+        main {
+          height: auto !important;
+          opacity: 1 !important;
+        }
       </style>
     </noscript>
   </head>
 
   <LayoutBody
     {...body}
-    class:list={[
-      bodyClass,
-      bodyClassList,
-      "h-full bg-black text-white relative",
-    ]}
+    class:list={[bodyClass, "h-full bg-black text-white relative"]}
   >
-    <>
-      <LayoutCanvasBg />
-      <div class="relative flex flex-col items-center z-10 h-full">
+    <LayoutCanvasBg />
+    <div class="relative flex flex-col items-center z-10 h-full">
+      <script>
+        import { REDUCED_MOTION } from "~constants/mediaQueries";
+        import { pageTransitionIn, addPageTransitionLinks, getAnchorLinks } from "~utils/page-transitions";
+
+        if (!REDUCED_MOTION) {
+          pageTransitionIn();
+          addPageTransitionLinks(getAnchorLinks());
+        }
+      </script>
+      <main class:list={["opacity-0 h-0", mainClass, "w-full bg-black/20"]}>
         <slot />
-        <!-- TODO move to another component to ease reading -->
-        <div
-          class="bg-black/20 w-full flex flex-col items-center mt-4 md:mt-8 p-1.5"
-        >
-          <nav
-            id="navigation"
-            class="flex flex-col items-center pb-4 space-y-4"
-          >
-            <div class="flex flex-wrap justify-center">
-              {
-                [
-                  { href: "", title: "Home" },
-                  { href: "about", title: "About" },
-                  { href: "blog", title: "Blog" },
-                  { href: "projects", title: "Projects" },
-                ].map(({ href, title }) => (
-                  <SmartLink
-                    class:list="mx-4 mb-4 w-full border-2 border-white/50 bg-neutral-900/50 px-4 py-2 text-center font-bold capitalize tracking-wide text-white hover:border-white hover:bg-neutral-800 focus:bg-neutral-800 motion-safe:will-change-transform motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 md:w-36"
-                    href={`/${href}`}
-                    title={title}
-                  >
-                    {title}
-                  </SmartLink>
-                ))
-              }
-            </div>
-            <div class="flex justify-center">
-              {
-                [
-                  {
-                    icon: "octicon:mark-github-16",
-                    href: "https://github.com/royeden",
-                    title: "Visit my Github profile",
-                  },
-                  {
-                    icon: "uiw:linkedin",
-                    href: "https://www.linkedin.com/in/roy-eden/",
-                    title: "Visit my linkedin",
-                  },
-                  {
-                    icon: "heroicons-outline:at-symbol",
-                    href: "mailto:roy.ede@gmail.com",
-                    title: "Send me an email",
-                  },
-                ].map(({ icon, href, title }) => (
-                  <SmartLink
-                    class="mx-4 p-2 text-neutral-300 hover:text-white focus:text-white motion-safe:will-change-transform motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110"
-                    href={href}
-                    title={title}
-                  >
-                    {<Icon name={icon} class="h-8 w-8" />}
-                  </SmartLink>
-                ))
-              }
-            </div>
-          </nav>
-          <footer class="text-white text-center space-y-1">
-            <p>
-              &copy;
-              <SmartLink
-                class="underline font-bold text-neutral-300 hover:text-white focus:text-white px-1"
-                href="/"
-              >
-                Roy Eden
-              </SmartLink>
-              — {year}
-            </p>
-            <p>
-              <SmartLink class="p-1" href="/credits">
-                <TextHighlight class="underline">
-                  Credits & Acknowledgements
-                </TextHighlight>
-              </SmartLink>
-            </p>
-          </footer>
-        </div>
+      </main>
+      <!-- TODO move to another component to ease reading -->
+      <div
+        class="bg-black/20 w-full flex flex-col items-center mt-4 md:mt-8 p-1.5"
+      >
+        <nav id="navigation" class="flex flex-col items-center pb-4 space-y-4">
+          <div class="flex flex-wrap justify-center">
+            {
+              [
+                { href: "", title: "Home" },
+                { href: "about", title: "About" },
+                { href: "blog", title: "Blog" },
+                { href: "projects", title: "Projects" },
+              ].map(({ href, title }) => (
+                <SmartLink
+                  class:list="mx-4 mb-4 w-full border-2 border-white/50 bg-neutral-900/50 px-4 py-2 text-center font-bold capitalize tracking-wide text-white hover:border-white hover:bg-neutral-800 focus:bg-neutral-800 motion-safe:will-change-transform motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 md:w-36"
+                  href={`/${href}`}
+                  title={title}
+                >
+                  {title}
+                </SmartLink>
+              ))
+            }
+          </div>
+          <div class="flex justify-center">
+            {
+              [
+                {
+                  icon: "octicon:mark-github-16",
+                  href: "https://github.com/royeden",
+                  title: "Visit my Github profile",
+                },
+                {
+                  icon: "uiw:linkedin",
+                  href: "https://www.linkedin.com/in/roy-eden/",
+                  title: "Visit my linkedin",
+                },
+                {
+                  icon: "heroicons-outline:at-symbol",
+                  href: "mailto:roy.ede@gmail.com",
+                  title: "Send me an email",
+                },
+              ].map(({ icon, href, title }) => (
+                <SmartLink
+                  class="mx-4 p-2 text-neutral-300 hover:text-white focus:text-white motion-safe:will-change-transform motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110"
+                  href={href}
+                  title={title}
+                >
+                  {<Icon name={icon} class="h-8 w-8" />}
+                </SmartLink>
+              ))
+            }
+          </div>
+        </nav>
+        <footer class="text-white text-center space-y-1">
+          <p>
+            &copy;
+            <SmartLink
+              class="underline font-bold text-neutral-300 hover:text-white focus:text-white px-1"
+              href="/"
+            >
+              Roy Eden
+            </SmartLink>
+            — {year}
+          </p>
+          <p>
+            <SmartLink class="p-1" href="/credits">
+              <TextHighlight class="underline">
+                Credits & Acknowledgements
+              </TextHighlight>
+            </SmartLink>
+          </p>
+        </footer>
       </div>
-    </>
+    </div>
   </LayoutBody>
 </html>
