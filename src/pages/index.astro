@@ -1,6 +1,5 @@
 ---
 // import { Image } from "@astrojs/image/components";
-import LazyImage from "~components/Base/LazyImage.astro";
 import TextRegular from "~components/Base/TextRegular.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 import MainLayout from "~layouts/MainLayout.astro";
@@ -34,7 +33,7 @@ const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
         src={me}
         alt="A picture of me looking at the camera"
       /> -->
-      <LazyImage
+      <img
         height={448}
         width={448}
         class="rounded-full motion-safe:animate-gradient rainbow-gradient"
