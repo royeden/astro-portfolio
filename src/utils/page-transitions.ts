@@ -21,7 +21,7 @@ class HeightTransition extends Highway.Transition {
     // Remove Old View
     from.remove();
 
-    if (REDUCED_MOTION.matches) return done();
+    if (REDUCED_MOTION) return done();
 
     const height = getComputedStyle(to).height;
     const pixelHeight = parseInt(height.replace("px", ""), 10);
@@ -57,7 +57,7 @@ class HeightTransition extends Highway.Transition {
     // Reset Scroll
     window.scrollTo(0, 0);
 
-    if (REDUCED_MOTION.matches) return done();
+    if (REDUCED_MOTION) return done();
 
     const height = getComputedStyle(from).height;
     const pixelHeight = parseInt(height.replace("px", ""), 10);
