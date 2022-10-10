@@ -63,17 +63,14 @@ const {
     <LayoutCanvasBg />
     <div class="relative flex flex-col items-center z-10 h-full">
       <script>
-        import { REDUCED_MOTION } from "~constants/mediaQueries";
         import {
           pageTransitionIn,
           addPageTransitionLinks,
-          getAnchorLinks,
+          getTransitionLinks,
         } from "~utils/page-transitions";
 
-        if (!REDUCED_MOTION) {
-          pageTransitionIn();
-          addPageTransitionLinks(getAnchorLinks());
-        }
+        pageTransitionIn();
+        getTransitionLinks().forEach((link) => addPageTransitionLinks(link));
       </script>
       <main
         class:list={[
