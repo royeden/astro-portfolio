@@ -70,14 +70,12 @@
     resizeObserver.observe(container);
 
     function setup() {
-      const amount = Math.min(
+      const amount =
         Math.floor(
           Math.max(window.innerWidth, window.innerHeight) /
             devicePixelRatio /
-            100
-        ) * 100,
-        1600
-      );
+            150
+        ) * 100;
 
       stars = Array.from(
         { length: amount },

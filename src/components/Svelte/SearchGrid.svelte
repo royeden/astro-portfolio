@@ -3,7 +3,10 @@
   import { fade } from "svelte/transition";
   import { flip } from "svelte/animate";
   import { Post } from "~constants/posts";
-  import { addPageTransitionLinks, removePageTransitionLinks } from "~utils/page-transitions";
+  import {
+    addPageTransitionLinks,
+    removePageTransitionLinks,
+  } from "~utils/page-transitions";
 
   interface Item extends Post {
     href: string;
@@ -97,8 +100,9 @@
             delay: 100,
             duration,
           }}
-          on:introend="{event => addPageTransitionLinks([event.currentTarget])}"
-          on:outrostart="{event => removePageTransitionLinks([event.currentTarget])}"
+          on:introend={(event) => addPageTransitionLinks([event.currentTarget])}
+          on:outrostart={(event) =>
+            removePageTransitionLinks([event.currentTarget])}
         >
           {#if item.image}
             <img
