@@ -7,8 +7,11 @@ import SmartLink from "~components/Base/SmartLink.astro";
 import type { Props as LayoutHeadProps } from "~components/Layouts/LayoutHead.astro";
 import TextHighlight from "~components/UI/TextHighlight.astro";
 import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+import { TRANSITION_PARAM_KEY } from "~utils/page-transitions";
 
 const year = new Date().getFullYear();
+
+const transition = Astro.url.searchParams.get(TRANSITION_PARAM_KEY);
 
 export interface Props extends astroHTML.JSX.HtmlHTMLAttributes {
   body?: astroHTML.JSX.HTMLAttributes;
@@ -72,7 +75,13 @@ const {
           addPageTransitionLinks(getAnchorLinks());
         }
       </script>
-      <main class:list={["opacity-0 h-0", mainClass, "w-full bg-black/20"]}>
+      <main
+        class:list={[
+          transition && "opacity-0 h-0",
+          mainClass,
+          "w-full bg-black/20",
+        ]}
+      >
         <slot />
       </main>
       <!-- TODO move to another component to ease reading -->
