@@ -11,7 +11,8 @@ export type Props = (Post & MarkdownContent) & {
 
 const site = import.meta.env.SITE as string;
 
-const { image, description, title, /* url, tags, */ layout } = Astro.props as Props;
+const { image, description, title, /* url, tags, */ layout } =
+  Astro.props as Props;
 ---
 
 <!-- TODO add content tables -->
