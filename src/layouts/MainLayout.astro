@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon";
 import LayoutCanvasBg from "~components/Layouts/LayoutCanvasBg.astro";
 import LayoutHead from "~components/Layouts/LayoutHead.astro";
-import LayoutBody from "~components/Layouts/LayoutBody.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import type { Props as LayoutHeadProps } from "~components/Layouts/LayoutHead.astro";
 import TextHighlight from "~components/UI/TextHighlight.astro";
@@ -56,7 +55,7 @@ const {
     </noscript>
   </head>
 
-  <LayoutBody
+  <body
     {...body}
     class:list={[bodyClass, "h-full bg-black text-white relative"]}
   >
@@ -155,5 +154,5 @@ const {
         </footer>
       </div>
     </div>
-  </LayoutBody>
+  </body>
 </html>
