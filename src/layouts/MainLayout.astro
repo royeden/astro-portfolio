@@ -63,13 +63,15 @@ const {
     <div class="relative flex flex-col items-center z-10 h-full">
       <script>
         import {
-          pageTransitionIn,
-          addPageTransitionLinks,
+          addPageTransitionLink,
           getTransitionLinks,
+          pageTransitionIn,
         } from "~utils/page-transitions";
 
-        pageTransitionIn();
-        getTransitionLinks().forEach((link) => addPageTransitionLinks(link));
+        document.addEventListener("DOMContentLoaded", () => {
+          pageTransitionIn();
+          getTransitionLinks().forEach((link) => addPageTransitionLink(link));
+        });
       </script>
       <main
         class:list={[

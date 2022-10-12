@@ -4,8 +4,8 @@
   import { flip } from "svelte/animate";
   import { Post } from "~constants/posts";
   import {
-    addPageTransitionLinks,
-    removePageTransitionLinks,
+    addPageTransitionLink,
+    removePageTransitionLink,
   } from "~utils/page-transitions";
   import { REDUCED_MOTION } from "~constants/mediaQueries";
 
@@ -101,17 +101,15 @@
             delay: 100,
             duration: REDUCED_MOTION ? 0 : duration,
           }}
-          on:introend={(event) => addPageTransitionLinks(event.currentTarget)}
+          on:introend={(event) => addPageTransitionLink(event.currentTarget)}
           on:outrostart={(event) =>
-            removePageTransitionLinks(event.currentTarget)}
+            removePageTransitionLink(event.currentTarget)}
         >
           {#if item.image}
             <img
               src={item.image}
               alt={item.title}
               class="aspect-video w-full bg-neutral-900/50 object-cover"
-              loading="lazy"
-              decoding="async"
             />
           {:else}
             <div
