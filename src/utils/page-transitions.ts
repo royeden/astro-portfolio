@@ -71,17 +71,14 @@ export function getTransitionLinks() {
     ) as HTMLAnchorElement[]
   ).filter(
     (link) =>
-      !link.href
-        .replace(window.location.origin, "")
-        .replace(window.location.pathname, "")
-        .includes("#")
+      link.href.includes(import.meta.env.BASE_URL) && !link.href.includes("#")
   );
 }
 
-export function addPageTransitionLinks(link: HTMLAnchorElement) {
+export function addPageTransitionLink(link: HTMLAnchorElement) {
   link.addEventListener("click", pageTransitionOut);
 }
 
-export function removePageTransitionLinks(link: HTMLAnchorElement) {
+export function removePageTransitionLink(link: HTMLAnchorElement) {
   link.removeEventListener("click", pageTransitionOut);
 }
