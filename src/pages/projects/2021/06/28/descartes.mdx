@@ -4,7 +4,7 @@ draft: false
 
 date: "Mon Jun 28 2021"
 description: "A 3D gallery that only allows you to enter if you degrade the quality of one of the images that's already present."
-image: "/src/images/posts/projects/2021/06/28/descartes/descartes.png"
+image: "~images/posts/projects/2021/06/28/descartes/descartes.png"
 tags:
   [
     "TypeScript",
@@ -39,7 +39,7 @@ export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
 
 <SmartLink class="block" href="https://descartes.vercel.app/">
   <div>
-    <Image src={mainImage} alt="A screenshot of the section dedicated to the conceptual inquiry about the
+    <Image aspectRatio="16:9" fit="cover" src={mainImage} alt="A screenshot of the section dedicated to the conceptual inquiry about the
   project" />
   </div>
 </SmartLink>

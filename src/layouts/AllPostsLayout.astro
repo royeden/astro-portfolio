@@ -5,7 +5,7 @@ import SearchGrid from "~components/Svelte/SearchGrid.svelte";
 import MainLayout from "./MainLayout.astro";
 import { Post } from "~constants/posts";
 import { MDXInstance } from "astro";
-// import { getImage } from "@astrojs/image";
+import { getImage } from "@astrojs/image";
 
 export interface Props {
   cta: string;
@@ -37,22 +37,22 @@ const posts = await Promise.all(
       throw new Error(`No title for post ${file}`);
     }
 
-    // const image = post.image
-    //   ? (
-    //       await getImage({
-    //         src: post.image,
-    //         format: "webp",
-    //         width: 320,
-    //         height: 236,
-    //       })
-    //     ).src
-    //   : "";
+    const image = post.image
+      ? (
+          await getImage({
+            src: post.image,
+            format: "webp",
+            width: 320,
+            height: 236,
+          })
+        ).src
+      : "";
 
     return {
       date: post.date,
       description: post.description,
       href: url,
-      image: post.image,
+      image,
       tags: post.tags,
       title: post.title,
     };
