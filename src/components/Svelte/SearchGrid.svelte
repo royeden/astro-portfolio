@@ -89,7 +89,7 @@
     >
       {#each filteredItems as item (item)}
         <a
-          class="group flex w-full flex-col justify-between space-y-2 overflow-hidden rounded-md border-2 border-neutral-800 pb-2 transition duration-300 hover:border-white focus:border-white focus:outline-none focus-visible:ring focus-visible:ring-white"
+          class="group flex w-full flex-col justify-between space-y-2 overflow-hidden rounded-md border-2 border-neutral-800 pb-2 transition duration-300 hover:border-white focus:border-white focus:outline-none focus-visible:ring focus-visible:ring-white bg-black/20 hover:bg-white/5 focus-visible:bg-white/5"
           href={item.href}
           in:fade={{
             duration: REDUCED_MOTION ? 0 : duration,
@@ -111,6 +111,7 @@
               alt={item.title}
               class="aspect-video w-full bg-neutral-900/50 object-cover"
               loading="lazy"
+              decoding="async"
             />
           {:else}
             <div
@@ -120,7 +121,7 @@
             </div>
           {/if}
           <div
-            class="flex h-full w-full flex-col items-center space-y-2 bg-black/50 p-4"
+            class="flex w-full flex-col items-center space-y-2 p-4"
             title={item.description}
           >
             <header class="text-center text-lg font-bold">
