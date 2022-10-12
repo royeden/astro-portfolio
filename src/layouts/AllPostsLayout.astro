@@ -40,7 +40,7 @@ const posts = await Promise.all(
     const image = post.image
       ? (
           await getImage({
-            src: post.image,
+            src: `../${post.image}`,
             format: "webp",
             width: 320,
             height: 236,
