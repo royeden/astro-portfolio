@@ -29,7 +29,7 @@ const { image, description, title, /* url, tags, */ layout } =
 >
   <SkipTo target="content">Skip to content</SkipTo>
   <SkipTo target="navigation">Skip to navigation</SkipTo>
-  <div class:list={["max-w-full sm:max-w-2xl", styles.content]}>
+  <div class:list={[styles.content, "sm:max-w-2xl w-full"]}>
     <slot />
   </div>
 </MainLayout>
