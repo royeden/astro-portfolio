@@ -90,9 +90,9 @@ export function getSmartLinkProps({
 }
 
 export function handleSmartLinkClick<T extends MouseEvent>(
-  event: T & { target: HTMLAnchorElement }
+  event: T & { currentTarget: HTMLAnchorElement }
 ) {
-  const contactHrefRaw = event.target.getAttribute("data-contact");
+  const contactHrefRaw = event.currentTarget.getAttribute("data-contact");
   if (contactHrefRaw) {
     const contactHref = atob(contactHrefRaw);
     window.location.href = contactHref;

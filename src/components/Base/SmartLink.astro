@@ -38,7 +38,7 @@ const smartLinkProps = getSmartLinkProps(smartLink);
     // console.log(link);
     link.addEventListener(
       "click",
-      (event: MouseEvent & { target: HTMLAnchorElement }) => {
+      (event: MouseEvent & { currentTarget: HTMLAnchorElement }) => {
         event.preventDefault();
         handleSmartLinkClick(event);
       }
