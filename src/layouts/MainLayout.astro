@@ -68,12 +68,10 @@ const {
           pageTransitionIn,
         } from "~utils/page-transitions";
 
-        document.onreadystatechange = () => {
-          if (document.readyState === "complete") {
-            pageTransitionIn();
-            getTransitionLinks().forEach((link) => addPageTransitionLink(link));
-          }
-        };
+        document.addEventListener("DOMContentLoaded", () => {
+          pageTransitionIn();
+          getTransitionLinks().forEach((link) => addPageTransitionLink(link));
+        });
       </script>
       <main
         class:list={[
