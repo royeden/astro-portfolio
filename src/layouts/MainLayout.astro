@@ -68,7 +68,7 @@ const {
           pageTransitionIn,
         } from "~utils/page-transitions";
 
-        document.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("pageshow", () => {
           pageTransitionIn();
           getTransitionLinks().forEach((link) => addPageTransitionLink(link));
         });
