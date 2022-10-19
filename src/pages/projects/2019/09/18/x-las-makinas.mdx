@@ -9,17 +9,20 @@ tags: ["HTML", "CSS", "JavaScript", "Art", "Open Source"]
 title: "X Las Makinas"
 ---
 
-import LazyImage from "~components/Base/LazyImage.astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # X Las Makinas
 
 ## A simple text scrambler made in a couple of hours intended to use for creating interesting texts via repetition
 
-<SmartLink class="block" href="https://x-las-makinas.netlify.app/">
+<SmartLink
+  class="flex w-full justify-center"
+  href="https://x-las-makinas.netlify.app/"
+>
   ![A screenshot showcasing the
   website](/assets/posts/projects/2019/09/18/x-las-makinas/x-las-makinas.png)
 </SmartLink>
@@ -60,8 +63,8 @@ An example for this would be the source of this file, that could produce the fol
 
 The site is made in HTML, CSS and JavaScript.
 
-The website can be visited [here](https://x-las-makinas.netlify.app/).
+[Visit the website](https://x-las-makinas.netlify.app/).
 
-The source code can be viewed [here](https://github.com/royeden/x-las-makinas).
+[View the source code](https://github.com/royeden/x-las-makinas).
 
 </div>

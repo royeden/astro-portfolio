@@ -25,17 +25,20 @@ tags:
 title: "Descartes"
 ---
 
-import LazyImage from "~components/Base/LazyImage.astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # Descartes
 
 ## A 3D gallery that only allows you to enter if you degrade the quality of one of the images that's already present
 
-<SmartLink class="block" href="https://descartes.vercel.app/">
+<SmartLink
+  class="flex w-full justify-center"
+  href="https://descartes.vercel.app/"
+>
   ![A screenshot of the section dedicated to the conceptual inquiry about the
   project](/assets/posts/projects/2021/06/28/descartes/descartes.png)
 </SmartLink>
@@ -56,7 +59,7 @@ The Front-End used NextJS, React-Three-Fiber for the 3D gallery and TailwindCSS 
 The Back-End was written in Python, using Flask with Swagger to handle Routes (and route documentation), SQLite to handle the metadata in the database, Pillow (a Python Image Library fork) to handle images (Resizing and feature extracting) and UMAP to sort the images in 3D space according to their features (which was saved for fitting additional images, a lighter process that runs much quicker).
 It also supports using Tensorflow for feature extraction but it requires a GPU to run.
 
-The website can be visited [here](https://descartes.vercel.app/).
+[Visit the website](https://descartes.vercel.app/).
 
 The Front-End is made with:
 
@@ -68,7 +71,7 @@ The Front-End is made with:
 - [Framer Motion](https://www.framer.com/docs/).
 - [Vercel (Hosting)](https://vercel.com/).
 
-The website source code can be viewed [here](https://github.com/royeden/descartes).
+[View the website source code](https://github.com/royeden/descartes).
 
 The Back-End is made with:
 
@@ -78,7 +81,7 @@ The Back-End is made with:
 - [UMAP](https://umap-learn.readthedocs.io/en/latest/).
 - [Pillow](https://pillow.readthedocs.io/en/stable/).
 
-The API source code can be viewed [here](https://github.com/royeden/descartes-api).
+[View the API source code](https://github.com/royeden/descartes-api).
 
 - [ngrok](https://ngrok.com/) was used for tunneling.
 

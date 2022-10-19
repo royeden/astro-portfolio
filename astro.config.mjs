@@ -7,7 +7,7 @@ import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
 
-const site = "https://roy-eden.vercel.app"
+const site = "https://roy-eden.vercel.app";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,7 +23,9 @@ export default defineConfig({
     prefetch(),
     svelte(),
     mdx(),
-    image(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     sitemap({
       customPages: [
         "index",
@@ -31,7 +33,7 @@ export default defineConfig({
         "blog",
         "projects",
         // TODO auto add all projects/blog posts
-      ].map(page => `${site}/${page}`)
+      ].map((page) => `${site}/${page}`),
     }),
   ],
 });

@@ -1,0 +1,41 @@
+---
+import { getImage } from "@astrojs/image";
+import type { ImgHTMLAttributes } from "@astrojs/image/components";
+import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+
+export type Props = ImgHTMLAttributes & Parameters<typeof getImage>[0];
+
+const {
+  alt,
+  aspectRatio = "16:9",
+  classList,
+  format = "webp",
+  position = "attention",
+  fit = "cover",
+  src,
+  height = 360,
+  width = 640,
+  ...props
+} = normalizeAstroClassListProps(Astro.props as Props);
+
+const optimizedSrc = (
+  await getImage({
+    aspectRatio,
+    src,
+    format,
+    position,
+    fit,
+    width,
+    height,
+  })
+).src;
+---
+
+<img
+  {...props}
+  class:list={classList}
+  height={height}
+  width={width}
+  src={optimizedSrc}
+  alt={alt}
+/>

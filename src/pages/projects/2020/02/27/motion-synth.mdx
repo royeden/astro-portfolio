@@ -19,17 +19,20 @@ tags:
 title: "Motion Synth"
 ---
 
-import LazyImage from "~components/Base/LazyImage.astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # Motion Synth
 
 ## A Synth that makes sound based on your movement with the help of TensorflowJS
 
-<SmartLink class="block" href="https://motion-synth.netlify.app/">
+<SmartLink
+  class="flex w-full justify-center"
+  href="https://motion-synth.netlify.app/"
+>
   ![A screenshot showcasing the
   app](/assets/posts/projects/2020/02/27/motion-synth/motion-synth.png)
 </SmartLink>
@@ -53,8 +56,8 @@ The site is made with:
 - Web Audio API.
 - Web Canvas API.
 
-The website can be visited [here](https://motion-synth.netlify.app/).
+[Visit the website](https://motion-synth.netlify.app/).
 
-The source code can be viewed [here](https://github.com/royeden/tensorflow-body-motion-synth).
+[View the source code](https://github.com/royeden/tensorflow-body-motion-synth).
 
 </div>

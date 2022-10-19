@@ -9,18 +9,20 @@ tags: ["JavaScript", "React", "Styled Components", "Animation", "Open Source"]
 title: "React Simon"
 ---
 
-import { Image } from "@astrojs/image/components";
-import LazyImage from "~components/Base/LazyImage.astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # React Simon
 
 ## freeCodeCamp's Simon Game Project made in React.
 
-<SmartLink class="block" href="https://react-simon.netlify.app/">
+<SmartLink
+  class="flex w-full justify-center"
+  href="https://react-simon.netlify.app/"
+>
   ![A screenshot of the
   webapp](/assets/posts/projects/2019/03/27/react-simon/react-simon.png)
 </SmartLink>
@@ -36,8 +38,8 @@ The site is made with:
 - [React](https://reactjs.org).
 - [Styled-Components](https://styled-components.com/).
 
-The website can be visited [here](https://react-simon.netlify.app/).
+[Visit the website](https://react-simon.netlify.app/).
 
-The source code can be viewed [here](https://github.com/royeden/react-simon).
+[View the source code](https://github.com/royeden/react-simon).
 
 </div>

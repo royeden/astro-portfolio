@@ -25,16 +25,19 @@ tags:
 title: "Re-building my portfolio in Astro"
 ---
 
-import LazyImage from "~components/Base/LazyImage.astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # Why Astro?
 
-![The new homepage for my portfolio](/assets/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png)
-_A screenshot of my new portfolio_
+<div class="flex w-full justify-center">
+  ![The new homepage for my
+  portfolio](/assets/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png)
+  _A screenshot of my new portfolio_
+</div>
 
 <div id="content">
   ## Choosing a framework today is hard
