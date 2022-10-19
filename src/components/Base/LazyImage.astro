@@ -1,16 +1,9 @@
 ---
 import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+import OptimizedImage, { Props } from "./OptimizedImage.astro";
+export type { Props };
 
-export interface Props extends astroHTML.JSX.HTMLAttributes {
-  alt: string;
-  src: string;
-  height?: number;
-  width?: number;
-}
-
-const { alt, classList, src, ...props } = normalizeAstroClassListProps(
-  Astro.props as Props
-);
+const props = normalizeAstroClassListProps(Astro.props as Props);
 ---
 
-<img {...props} class:list={classList} src={src} alt={alt} loading="lazy" />
+<OptimizedImage {...props} loading="lazy" decoding="async" />

@@ -4,13 +4,15 @@ import TextRegular from "~components/Base/TextRegular.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 import MainLayout from "~layouts/MainLayout.astro";
 
-const me = (await getImage({
-  src: "/assets/me.png",
-  height: 448,
-  width: 448,
-  format: "webp",
-  fit: "contain",
-})).src;
+const me = (
+  await getImage({
+    src: "/assets/me.png",
+    height: 448,
+    width: 448,
+    format: "webp",
+    fit: "contain",
+  })
+).src;
 
 // TODO export into different components to do some crazy css stunts & use a framework that does it on mount/update. This is currently SSR once because it's static
 const PHRASES = [

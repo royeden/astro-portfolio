@@ -63,7 +63,7 @@
   class="container relative flex w-full flex-col items-center justify-center space-y-2 py-2"
 >
   <div
-    class="sticky top-0 z-40 flex w-full max-w-md flex-col space-y-1 bg-black/20 p-1"
+    class="sticky top-0 z-40 flex w-full max-w-md flex-col space-y-1 rounded-lg bg-black/50 p-2"
   >
     <!-- TODO add presets -->
     <!-- TODO add sort -->
@@ -85,11 +85,11 @@
 
   {#if filteredItems.length > 0}
     <div
-      class="container grid h-full max-w-xs gap-2 sm:max-w-full sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+      class="container grid h-full w-full gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
     >
       {#each filteredItems as item (item)}
         <a
-          class="group flex w-full flex-col justify-between space-y-2 overflow-hidden rounded-md border-2 border-neutral-800 pb-2 transition duration-300 hover:border-white focus:border-white focus:outline-none focus-visible:ring focus-visible:ring-white bg-black/20 hover:bg-white/5 focus-visible:bg-white/5"
+          class="group flex w-full flex-col justify-between space-y-2 overflow-hidden rounded-md border-2 border-neutral-800 bg-black/20 pb-2 transition duration-300 hover:border-white hover:bg-white/5 focus:border-white focus:outline-none focus-visible:bg-white/5 focus-visible:ring focus-visible:ring-white"
           href={item.href}
           in:fade={{
             duration: REDUCED_MOTION ? 0 : duration,

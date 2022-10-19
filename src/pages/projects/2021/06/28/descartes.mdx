@@ -4,7 +4,7 @@ draft: false
 
 date: "Mon Jun 28 2021"
 description: "A 3D gallery that only allows you to enter if you degrade the quality of one of the images that's already present."
-image: "assets/posts/projects/2021/06/28/descartes/descartes.png"
+image: "/assets/posts/projects/2021/06/28/descartes/descartes.png"
 tags:
   [
     "TypeScript",
@@ -24,24 +24,22 @@ tags:
   ]
 title: "Descartes"
 ---
-import { Image } from "@astrojs/image/components";
-import LazyImage from "~components/Base/LazyImage.astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-import mainImage from "~images/posts/projects/2021/06/28/descartes/descartes.png"
-
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # Descartes
 
 ## A 3D gallery that only allows you to enter if you degrade the quality of one of the images that's already present
 
-<SmartLink class="block" href="https://descartes.vercel.app/">
-  <div>
-    <Image fit="cover" width={720} src={mainImage} format="webp" alt="A screenshot of the section dedicated to the conceptual inquiry about the
-  project" />
-  </div>
+<SmartLink
+  class="flex w-full justify-center"
+  href="https://descartes.vercel.app/"
+>
+  ![A screenshot of the section dedicated to the conceptual inquiry about the
+  project](/assets/posts/projects/2021/06/28/descartes/descartes.png)
 </SmartLink>
 _A screenshot of the investigation section of the website_
 

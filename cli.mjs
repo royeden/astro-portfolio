@@ -24,8 +24,8 @@ const TAG_SUGGESTIONS = {
     "C",
     "C++",
   ],
-  frontend: ["React", "React Native", "VueJS", "Svelte"],
-  backend: ["NodeJS", "ExpressJS", "Flask", "SQLite", "GraphQL"],
+  frontend: ["React", "React Native", "VueJS", "Svelte", "Astro", "SolidJS"],
+  backend: ["NodeJS", "ExpressJS", "Flask", "SQLite", "GraphQL", "SQL"],
   fullstack: ["Astro", "NextJS", "Gatsby", "Laravel"],
   libraries: [
     "Framer-Motion",
@@ -139,7 +139,6 @@ async function main() {
             title,
             value: title,
           })),
-        max: 15,
       },
       {
         type: "confirm",
@@ -154,7 +153,9 @@ async function main() {
   );
 
   const date = post.date;
-  const dateSlug = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")}`;
+  const dateSlug = `${date.getFullYear()}/${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")}`;
   const postDir = path.join(
     path.dirname(url.fileURLToPath(import.meta.url)),
     `/src/pages/${type}/${dateSlug}`
@@ -168,11 +169,11 @@ async function main() {
   }
   const postFilename = slugify(post.title).toLocaleLowerCase();
 
-  const assetsBaseURL = `posts/${type}/${dateSlug}/${postFilename}`;
+  const assetsBaseURL = `/assets/posts/${type}/${dateSlug}/${postFilename}`;
 
   const assetsDir = path.join(
     path.dirname(url.fileURLToPath(import.meta.url)),
-    `/src/${assetsBaseURL}`
+    `/public${assetsBaseURL}`
   );
 
   const postPath = path.join(postDir, postFilename);
@@ -197,6 +198,8 @@ async function main() {
     fs.mkdirSync(assetsDir, { recursive: true });
   }
 
+  const postImageSrc = post.assets && `${assetsDir}/${postFilename}.jpeg`;
+
   fs.writeFileSync(
     path.join(postDir, `${postFilename}.mdx`),
     `---
@@ -205,30 +208,23 @@ draft: ${post.draft}
 
 date: "${date.toDateString()}"
 description: "${post.description ?? ""}"
-${post.assets ? `image: "/${assetsBaseURL}/${postFilename}.png"` : '# image: ""'}
+${postImageSrc ? `image: "${postImageSrc}"` : '# image: ""'}
 tags: [${post.tags.map((tag) => `"${tag}"`).join(", ")}]
 title: "${post.title}"
 ---
-import { Image } from "@astrojs/image/components";
-import LazyImage from "~components/Base/LazyImage.astro"
+import OptimizedImage from "~components/Base/OptimizedImage.astro"
 import SmartLink from "~components/Base/SmartLink.astro"
 import TextTitle from "~components/Base/TextTitle.astro"
 
-${
-  post.assets
-    ? `import mainImage from "~${assetsBaseURL}/${postFilename}.png"`
-    : ""
-}
-
-export const components = { a: SmartLink, h1: TextTitle, img: LazyImage };
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 
 # ${post.title}
 ## ${post.description}
 ${
-  post.assets
-    ? `<div>
-  <Image src={mainImage} alt="main image for the post" />
-</div>`
+  postImageSrc
+    ? `<SmartLink class="flex w-full justify-center">
+  <OptimizedImage height={405} width={720} aspectRatio="16:9" src=${postImageSrc} alt="main image for the post" />
+</SmartLink>`
     : ""
 }
 <div id="content">
