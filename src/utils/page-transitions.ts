@@ -6,12 +6,25 @@ export const TRANSITION_PARAM_KEY = "transition";
 
 export function pageTransitionIn() {
   const search = new URLSearchParams(window.location.search);
+  function cleanupTransitionStyles() {
+    main.style.height = "auto";
+    main.style.opacity = "1";
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.delete(TRANSITION_PARAM_KEY);
+    const search = searchParams.toString();
+    window.history.replaceState(
+      null,
+      "",
+      search
+        ? `${window.location.pathname}?${search}`
+        : window.location.pathname
+    );
+  }
   if (search.get(TRANSITION_PARAM_KEY)) {
     if (REDUCED_MOTION) {
-      main.style.height = "auto";
-      main.style.opacity = "1";
+      cleanupTransitionStyles();
     } else {
-      main.animate(
+      const pageInAnimation = main.animate(
         [
           { opacity: 0, height: 0 },
           { opacity: 0, height: `${main.scrollHeight}px` },
@@ -26,6 +39,8 @@ export function pageTransitionIn() {
           fill: "forwards",
         }
       );
+      pageInAnimation.oncancel = () => cleanupTransitionStyles();
+      pageInAnimation.onfinish = () => cleanupTransitionStyles();
     }
   }
 }

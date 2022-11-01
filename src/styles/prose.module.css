@@ -1,3 +1,4 @@
 .content {
-  @apply prose prose-invert prose-pink;
+  @apply prose prose-pink;
+  @apply prose-invert;
 }

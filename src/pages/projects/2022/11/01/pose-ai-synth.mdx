@@ -1,0 +1,91 @@
+---
+layout: "~layouts/ProjectsLayout.astro"
+draft: false
+
+date: "Tue Nov 01 2022"
+description: "A MIDI controller that uses Poses from your body to control notes. Built with MediaPipe's AI, Astro & SolidJS."
+image: "/assets/posts/projects/2022/11/01/pose-ai-synth/pose-ai-synth.jpeg"
+tags:
+  [
+    "TypeScript",
+    "Astro",
+    "SolidJS",
+    "TailwindCSS",
+    "Accessibility",
+    "Art",
+    "Artificial Intelligence",
+    "Design",
+    "Open Source",
+  ]
+title: "Pose AI Synth"
+---
+
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
+
+export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
+
+# Pose AI Synth
+
+## A MIDI controller that uses Poses from your body to control notes
+
+<SmartLink
+  href="https://pose-ai-synth.vercel.app/"
+  class="flex w-full justify-center"
+>
+  <OptimizedImage
+    height={405}
+    width={720}
+    aspectRatio="16:9"
+    src="/assets/posts/projects/2022/11/01/pose-ai-synth/pose-ai-synth.jpeg"
+    alt="A Screenshot from the App"
+  />
+</SmartLink>
+<div id="content">
+### About
+
+This App allows you to map body movement to MIDI notes with the help of your webcam and MediaPipe's AI.
+It's intended use is as a Note/Control message controller.
+
+I revisited my [motion synth project](/projects/2020/02/27/motion-synth/) but with a focus on generating MIDI notes instead of sound on the browser.
+
+This project is still on early stages but it has proved to work pretty well and be really fun to use. It's made with Astro and SolidJS.
+
+#### Challenges faced during the development:
+
+* Mediapipe's solutions are in CJS.
+* Re-implemented Mediapipe's camera solution but with the chance to update the params.
+* Astro-Solid integration is kind of broken during SSR (this means that static rendering breaks as well) when handling children, this app will probably be migrated to Solid Start in the future.
+* Performance in different devices.
+
+#### Current features:
+
+- Select different MIDI controllers to send info to them.
+- Locally stored state.
+- Directional mappers and note range settings for each keypoint in poses.
+- Custom camera solution to fix issues with @mediapipe solutions.
+
+#### Planned Features:
+
+- Export config.
+- Map to different controllers/MIDI actions.
+- Multiple mappers per keypoint.
+- Rethinking the UI and the user flow.
+- In app quantization.
+- Performance optimizations.
+- Demo patches/videos to integrate with other softwares.
+- Modify the config via MIDI.
+- i18n.
+
+[Visit the website](https://pose-ai-synth.vercel.app/).
+
+The App is made with:
+
+- [Astro](https://astro.build).
+- [SolidJS](https://solidjs.com).
+- [Mediapipe (AI)](https://mediapipe.dev/).
+- [Vercel (Hosting)](https://vercel.com/).
+
+[View the website source code](https://github.com/royeden/astro-solid-ai-synth).
+  </div>

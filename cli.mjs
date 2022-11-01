@@ -24,7 +24,7 @@ const TAG_SUGGESTIONS = {
     "C",
     "C++",
   ],
-  frontend: ["React", "React Native", "VueJS", "Svelte", "Astro", "SolidJS"],
+  frontend: ["React", "React Native", "VueJS", "Svelte", "SolidJS"],
   backend: ["NodeJS", "ExpressJS", "Flask", "SQLite", "GraphQL", "SQL"],
   fullstack: ["Astro", "NextJS", "Gatsby", "Laravel"],
   libraries: [
@@ -172,7 +172,7 @@ async function main() {
   const assetsBaseURL = `/assets/posts/${type}/${dateSlug}/${postFilename}`;
 
   const assetsDir = path.join(
-    path.dirname(url.fileURLToPath(import.meta.url)),
+    path.dirname(import.meta.url),
     `/public${assetsBaseURL}`
   );
 
@@ -223,7 +223,7 @@ export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
 ${
   postImageSrc
     ? `<SmartLink class="flex w-full justify-center">
-  <OptimizedImage height={405} width={720} aspectRatio="16:9" src=${postImageSrc} alt="main image for the post" />
+  <OptimizedImage height={405} width={720} aspectRatio="16:9" src="${postImageSrc}" alt="main image for the post" />
 </SmartLink>`
     : ""
 }
