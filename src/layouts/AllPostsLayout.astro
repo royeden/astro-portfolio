@@ -41,6 +41,7 @@ const posts = await Promise.all(
       ? (
           await getImage({
             src: post.image,
+            alt: post.alt ?? "",
             format: "webp",
             fit: "cover",
             position: "attention",

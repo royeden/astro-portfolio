@@ -22,20 +22,21 @@ const optimizedSrc = (
   await getImage({
     aspectRatio,
     src,
+    alt,
     format,
     position,
     fit,
     width,
     height,
   })
-).src;
+);
 ---
 
 <img
   {...props}
   class:list={classList}
+  {...optimizedSrc}
   height={height}
   width={width}
-  src={optimizedSrc}
   alt={alt}
 />

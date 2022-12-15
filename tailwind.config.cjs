@@ -19,7 +19,7 @@ module.exports = {
         gradient: "gradient 7s linear infinite",
       },
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: ['"InterVariable"', ...defaultTheme.fontFamily.sans],
       },
     },
   },

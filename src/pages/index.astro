@@ -6,13 +6,14 @@ import MainLayout from "~layouts/MainLayout.astro";
 
 const me = (
   await getImage({
+    alt: "A picture of me looking at the camera",
     src: "/assets/me.png",
     height: 448,
     width: 448,
     format: "webp",
     fit: "contain",
   })
-).src;
+);
 
 // TODO export into different components to do some crazy css stunts & use a framework that does it on mount/update. This is currently SSR once because it's static
 const PHRASES = [
@@ -36,11 +37,8 @@ const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
       class="bg-white rounded-full aspect-square md:w-full w-60 md:max-w-sm lg:max-w-md"
     >
       <img
-        height={448}
-        width={448}
+        {...me}
         class="rounded-full motion-safe:animate-gradient rainbow-gradient"
-        src={me}
-        alt="A picture of me looking at the camera"
       />
     </div>
     <div class="w-full space-y-2 px-2 text-center">
