@@ -8,6 +8,7 @@
     removePageTransitionLink,
   } from "~utils/page-transitions";
   import { REDUCED_MOTION } from "~constants/mediaQueries";
+  import { debounce } from "~utils/helpers";
 
   interface Item extends Post {
     href: string;
@@ -29,15 +30,11 @@
 
   let duration: number;
 
-  // TODO add fuzzy search
-  // https://fzf.netlify.app/docs/latest
-  // https://github.com/krisk/Fuse
-  // TODO add sort
-  $: {
+  function filter(search: string) {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      if (searchParams.get("search") !== query) {
-        searchParams.set("search", query);
+      if (searchParams.get("search") !== search) {
+        searchParams.set("search", search);
         window.history.pushState(
           null,
           "",
@@ -45,17 +42,26 @@
         );
       }
     }
-    const regexQuery = new RegExp(query, "i");
+
+    // TODO add fuzzy search
+    // https://fzf.netlify.app/docs/latest
+    // https://github.com/krisk/Fuse
+    // TODO add sort
+    const regexSearch = new RegExp(search, "i");
     filteredItems = items.filter(
       (item) =>
-        item.title.match(regexQuery) ||
-        item.tags.some((tag) => tag.match(regexQuery))
+        item.title.match(regexSearch) ||
+        item.tags.some((tag) => tag.match(regexSearch))
     );
     duration = Math.min(
-      Math.max((filteredItems.length / items.length) * 500, 300),
+      Math.max((filteredItems.length / items.length) * 500, 400),
       500
     );
   }
+
+  const debouncedFilter = debounce(filter, 250);
+
+  $: debouncedFilter(query);
 </script>
 
 <form
@@ -94,11 +100,8 @@
           in:fade={{
             duration: REDUCED_MOTION ? 0 : duration,
           }}
-          out:fade={{
-            duration: 0,
-          }}
           animate:flip={{
-            delay: 100,
+            delay: REDUCED_MOTION ? 0 : duration / 8,
             duration: REDUCED_MOTION ? 0 : duration,
           }}
           on:introend={(event) => addPageTransitionLink(event.currentTarget)}
