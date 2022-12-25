@@ -1,0 +1,22 @@
+---
+import Accordion, {
+  Props as AccordionProps,
+} from "~components/Base/Accordion.astro";
+
+export interface Props extends AccordionProps {
+  items: astroHTML.JSX.Element[];
+}
+
+const { items, ...props } = Astro.props as Props;
+---
+
+<Accordion {...props}>
+  <slot />
+  <Fragment slot="content">
+    <div class="mx-1 pt-1">
+      <ul class="ml-8 list-disc space-y-2">
+        {items.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </Fragment>
+</Accordion>

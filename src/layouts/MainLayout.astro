@@ -32,7 +32,7 @@ const {
   lang="en"
   class:list={[
     normalizeAstroClassListProps(props).classList,
-    "h-full motion-safe:scroll-smooth scrollbar scrollbar-thin scrollbar-track-black/20 scrollbar-thumb-pink-500",
+    "scrollbar-track-black/20 h-full scrollbar scrollbar-thin scrollbar-thumb-pink-500 motion-safe:scroll-smooth",
   ]}
 >
   <head>
@@ -60,7 +60,7 @@ const {
     class:list={[bodyClass, "h-full bg-black text-white relative"]}
   >
     <LayoutCanvasBg />
-    <div class="relative flex flex-col items-center z-10 h-full">
+    <div class="relative z-10 flex h-full flex-col items-center">
       <script>
         import {
           addPageTransitionLink,
@@ -84,10 +84,10 @@ const {
       </main>
       <!-- TODO move to another component to ease reading -->
       <div
-        class="bg-black/20 w-full flex flex-col items-center mt-4 md:mt-8 p-1.5"
+        class="mt-4 flex w-full flex-col items-center bg-black/20 p-1.5 md:mt-8"
       >
-        <nav id="navigation" class="flex flex-col items-center pb-4 space-y-4">
-          <div class="flex flex-wrap justify-center">
+        <nav id="navigation" class="flex flex-col items-center space-y-4 pb-4">
+          <ul class="flex flex-wrap justify-center">
             {
               [
                 { href: "", title: "Home" },
@@ -95,17 +95,19 @@ const {
                 { href: "blog", title: "Blog" },
                 { href: "projects", title: "Projects" },
               ].map(({ href, title }) => (
-                <SmartLink
-                  class:list="mx-4 mb-4 w-full border-2 border-white/50 bg-neutral-900/50 px-4 py-2 text-center font-bold capitalize tracking-wide text-white hover:border-white hover:bg-neutral-800 focus:bg-neutral-800 motion-safe:will-change-transform motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 md:w-36"
-                  href={`/${href}`}
-                  title={title}
-                >
-                  {title}
-                </SmartLink>
+                <li class="mx-4 mb-4 flex w-full items-center justify-center sm:w-auto">
+                  <SmartLink
+                    class="w-full border-2 border-white/50 bg-neutral-900/50 px-4 py-2 text-center font-bold capitalize tracking-wide text-white hover:border-white hover:bg-neutral-800 focus:bg-neutral-800 motion-safe:will-change-transform motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1 md:w-36"
+                    href={`/${href}`}
+                    title={title}
+                  >
+                    {title}
+                  </SmartLink>
+                </li>
               ))
             }
-          </div>
-          <div class="flex justify-center">
+          </ul>
+          <ul class="flex justify-center">
             {
               [
                 {
@@ -124,18 +126,20 @@ const {
                   title: "Send me an email",
                 },
               ].map(({ icon, href, title }) => (
-                <SmartLink
-                  class="mx-4 p-2 text-neutral-300 hover:text-white focus:text-white motion-safe:will-change-transform motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110"
-                  href={href}
-                  title={title}
-                >
-                  {<Icon name={icon} class="h-8 w-8" />}
-                </SmartLink>
+                <li class="mx-4 flex w-full items-center justify-center sm:w-auto">
+                  <SmartLink
+                    class="p-2 text-neutral-300 hover:text-white focus:text-white motion-safe:will-change-transform motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110"
+                    href={href}
+                    title={title}
+                  >
+                    {<Icon name={icon} class="h-8 w-8" />}
+                  </SmartLink>
+                </li>
               ))
             }
-          </div>
+          </ul>
         </nav>
-        <footer class="text-white text-center space-y-1">
+        <footer class="space-y-1 text-center text-white">
           <p>
             &copy;
             <SmartLink
@@ -156,5 +160,7 @@ const {
         </footer>
       </div>
     </div>
+
+
   </body>
 </html>

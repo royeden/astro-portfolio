@@ -1,18 +1,35 @@
 ---
 import SkipTo from "~components/Base/SkipTo.astro";
+import TextTitle from "~components/Base/TextTitle.astro";
 import { Post } from "~constants/posts";
 import MainLayout from "./MainLayout.astro";
-import { MarkdownContent } from "astro";
 import styles from "~styles/prose.module.css";
+import TableOfContents, {
+  Props as TableOfContentsProps,
+} from "~components/UI/TableOfContents.astro";
+import { MarkdownLayoutProps } from "astro";
+import OptimizedImage from "~components/Base/OptimizedImage.astro";
+import SmartLink from "~components/Base/SmartLink.astro";
 
-export type Props = (Post & MarkdownContent) & {
+export type Props = MarkdownLayoutProps<Post> & {
   layout: "Blog" | "Projects";
 };
 
 const site = import.meta.env.SITE as string;
 
-const { image, description, title, /* url, tags, */ layout } =
-  Astro.props as Props;
+const { frontmatter, headings, /* url, tags, */ layout } = Astro.props as Props;
+
+const { alt, image, description, title, website } = frontmatter;
+
+const contents = headings.reduce((filtered, heading) => {
+  if (heading.depth <= 3) {
+    filtered.push({
+      title: heading.text,
+      id: heading.slug,
+    });
+  }
+  return filtered;
+}, [] as TableOfContentsProps["items"]);
 ---
 
 <!-- TODO add content tables -->
@@ -23,13 +40,24 @@ const { image, description, title, /* url, tags, */ layout } =
       : undefined,
     description: description ?? "",
     pageType: "article",
-    title: `Roy Eden - ${layout} - ${title}`,
+    title: `Roy Eden - ${layout} | ${title}`,
   }}
   mainClass="flex flex-col items-center px-4 pt-8"
 >
   <SkipTo target="content">Skip to content</SkipTo>
   <SkipTo target="navigation">Skip to navigation</SkipTo>
   <div class:list={[styles.content, "sm:max-w-2xl w-full"]}>
+    <TextTitle>{title}</TextTitle>
+    <h2>{description}</h2>
+    <SmartLink class="flex flex-col items-center mb-4 not-prose" href={website}>
+      <OptimizedImage src={image} alt={alt} />
+      <p class="w-full flex items-center px-4">
+        <em>{alt}</em>
+      </p>
+    </SmartLink>
+    <div class="flex w-full justify-center">
+      <TableOfContents class="w-full not-prose" items={contents} />
+    </div>
     <slot />
   </div>
 </MainLayout>

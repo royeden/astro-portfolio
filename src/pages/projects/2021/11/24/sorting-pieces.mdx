@@ -3,8 +3,9 @@ layout: "~layouts/ProjectsLayout.astro"
 draft: false
 
 date: "11/24/2021"
-description: "A demo to showcase a small library made with framer motion to play a game where you have to sort pieces"
+description: "A demo to showcase a small library made with framer motion to play a game where you have to sort pieces."
 image: "/assets/posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png"
+alt: "A screenshot showcasing the website"
 tags:
   [
     "TypeScript",
@@ -21,17 +22,9 @@ title: "Sorting pieces"
 
 import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
-import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
+export const components = { a: SmartLink, img: OptimizedImage };
 
-# Sorting pieces
-
-## A demo to showcase a small library made with framer motion to play a game where you have to sort pieces
-
-<SmartLink class="flex w-full justify-center" href="http://demo-sort-pieces.vercel.app/">
-  ![An image showcasing the demo app](/assets/posts/projects/2021/11/24/sorting-pieces/sorting-pieces.png)
-</SmartLink>
 <div id="content">
   ### About
   [This demo](http://demo-sort-pieces.vercel.app/) showcases a simple game of [a

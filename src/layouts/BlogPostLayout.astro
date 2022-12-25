@@ -1,13 +1,10 @@
 ---
-import PostLayout, { Props as PostLayoutProps } from "./PostLayout.astro";
+import PostLayout, { Props } from "./PostLayout.astro";
 
-export interface Props {
-  content: PostLayoutProps;
-}
+const props = Astro.props as Omit<Props, "layout">;
 
-const { content } = Astro.props as Props;
 ---
 
-<PostLayout {...content} layout="Blog">
+<PostLayout {...props} layout="Blog">
   <slot />
 </PostLayout>

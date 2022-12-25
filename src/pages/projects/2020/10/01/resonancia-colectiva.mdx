@@ -5,6 +5,7 @@ draft: false
 date: "10/1/2020"
 description: "A collaborative audiovisual project made during the 2020 pandemic."
 image: "/assets/posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png"
+alt: "The logo of the project: two hands holding an SD memory card with the temporary title"
 tags:
   [
     "JavaScript",
@@ -25,27 +26,8 @@ title: "Resonancia Colectiva"
 
 import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
-import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
-
-# Resonancia Colectiva
-
-## A collaborative audiovisual project made during the 2020 pandemic
-
-<SmartLink
-  class="flex w-full justify-center"
-  href="https://pandemi-ae.vercel.app/"
->
-  <OptimizedImage
-    aspectRatio="1:1"
-    height={640}
-    width={640}
-    src="/assets/posts/projects/2020/10/01/resonancia-colectiva/resonancia-colectiva.png"
-    alt="Two hands holding an SD memory card with the label of the
-  project"
-  />
-</SmartLink>
+export const components = { a: SmartLink, img: OptimizedImage };
 
 <div id="content">
   ## About

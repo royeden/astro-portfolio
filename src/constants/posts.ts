@@ -3,6 +3,7 @@ export interface Post {
   description: string;
   image?: string;
   alt?: string;
+  website: string;
   tags: string[];
   title: string;
 }

@@ -3,8 +3,9 @@ layout: "~layouts/ProjectsLayout.astro"
 draft: false
 
 date: "Tue Nov 01 2022"
-description: "A MIDI controller that uses Poses from your body to control notes. Built with MediaPipe's AI, Astro & SolidJS."
+description: "A MIDI controller that uses Poses from your body to control the notes."
 image: "/assets/posts/projects/2022/11/01/pose-ai-synth/pose-ai-synth.jpeg"
+alt: "A screenshot showcasing the website"
 tags:
   [
     "TypeScript",
@@ -19,29 +20,11 @@ tags:
   ]
 title: "Pose AI Synth"
 ---
-
 import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
-import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
+export const components = { a: SmartLink, img: OptimizedImage };
 
-# Pose AI Synth
-
-## A MIDI controller that uses Poses from your body to control notes
-
-<SmartLink
-  href="https://pose-ai-synth.vercel.app/"
-  class="flex w-full justify-center"
->
-  <OptimizedImage
-    height={405}
-    width={720}
-    aspectRatio="16:9"
-    src="/assets/posts/projects/2022/11/01/pose-ai-synth/pose-ai-synth.jpeg"
-    alt="A Screenshot from the App"
-  />
-</SmartLink>
 <div id="content">
 ### About
 

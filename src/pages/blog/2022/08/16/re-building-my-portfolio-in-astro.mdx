@@ -5,6 +5,8 @@ draft: false
 date: "8/16/2022"
 description: "Why I choose this framework above everything else right now..."
 image: "/assets/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png"
+alt: "A screenshot of my new portfolio"
+website: "/"
 tags:
   [
     "HTML",
@@ -29,15 +31,7 @@ import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
-
-# Why Astro?
-
-<div class="flex w-full justify-center">
-  ![The new homepage for my
-  portfolio](/assets/posts/blog/2022/08/16/re-building-my-portfolio-in-astro/re-building-my-portfolio-in-astro.png)
-  _A screenshot of my new portfolio_
-</div>
+export const components = { a: SmartLink, img: OptimizedImage };
 
 <div id="content">
   ## Choosing a framework today is hard
@@ -129,7 +123,7 @@ In the end, this is what I've made. I also took some time to build a small helpe
 
 I'm still gonna be fixing some small issues or approaches if something nicer comes my way, but this is my portfolio site for now, feel free to [explore it](/) 😊.
 
-## Update:
+## Update
 
 I've ended up removing [`@dogstudio/highway`](https://highway.js.org/) and applying a simpler approach to page transitions, instead of combining that library with a hack that eventually broke 😅
 

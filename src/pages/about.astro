@@ -1,5 +1,4 @@
 ---
-import Accordion from "~components/Base/Accordion.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 import TextSubitle from "~components/Base/TextSubitle.astro";
@@ -9,6 +8,7 @@ import Card from "~components/UI/Card.astro";
 import TableOfContents from "~components/UI/TableOfContents.astro";
 import TextHighlight from "~components/UI/TextHighlight.astro";
 import MainLayout from "~layouts/MainLayout.astro";
+import AccordionList from "~components/UI/AccordionList.astro";
 ---
 
 <MainLayout
@@ -109,7 +109,7 @@ import MainLayout from "~layouts/MainLayout.astro";
                 "Continuous Intregration / Deployment Configuration for the mobile application using Bitrise.",
               ],
               stack: [
-                "NextJS",
+                "Next.js",
                 "React",
                 "React Native",
                 "Redux",
@@ -134,13 +134,32 @@ import MainLayout from "~layouts/MainLayout.astro";
                 "Implemented end to end testing with Cypress.",
               ],
               stack: [
-                "VueJS (version 2.7.x)",
+                "Vue (version 2.7.x)",
                 "Laravel",
                 "TailwindCSS",
                 "Cypress",
                 "SQL",
                 "Design",
                 "SASS",
+              ],
+            },
+            {
+              workplace: "ZERF",
+              position: "Full-Stack Developer",
+              website: "https://www.zerf.tech/",
+              start: 2022,
+              end: "Current",
+              responsabilities: [
+                "Development in multiple projects",
+                "Designing training flows for new staff",
+                "Strive for better DX and accessibility",
+                "More info in the future, I'm still new 🙂"
+              ],
+              stack: [
+                "React",
+                "Next.js",
+                "TailwindCSS",
+                "Typescript",
               ],
             },
           ].map(
@@ -154,8 +173,8 @@ import MainLayout from "~layouts/MainLayout.astro";
               end,
             }) => (
               <Card class="w-full space-y-2 p-4">
-                <TextRegular class="space-y-1">
-                  <h3 class="font-bold">{position}</h3>
+                <TextRegular class="space-y-1 text-xl">
+                  <header class="font-bold">{position}</header>
                   <div class="flex items-center justify-between space-x-4">
                     <SmartLink
                       class="w-full font-bold underline"
@@ -170,14 +189,14 @@ import MainLayout from "~layouts/MainLayout.astro";
                 </TextRegular>
                 <div class="divide-y-2 divide-white/50">
                   <div class="pb-4">
-                    <Accordion items={responsabilities} open>
-                      <h4 class="inline">Responsabilities:</h4>
-                    </Accordion>
+                    <AccordionList items={responsabilities} open>
+                      Responsabilities:
+                    </AccordionList>
                   </div>
                   <div class="pt-4">
-                    <Accordion items={stack} open>
-                      <h4 class="inline">Tech Stack:</h4>
-                    </Accordion>
+                    <AccordionList items={stack} open>
+                      Tech Stack:
+                    </AccordionList>
                   </div>
                 </div>
               </Card>
@@ -187,14 +206,14 @@ import MainLayout from "~layouts/MainLayout.astro";
         <Card
           class="w-full p-4 flex flex-col justify-center items-center space-y-2 text-2xl"
         >
-          <h3 class="font-bold">This could be your company 😁</h3>
+          <header class="font-bold">This could be your company 😁</header>
           <p>
-            You can consider <SmartLink
+            <SmartLink
               class="p-1"
               href="mailto:roy.ede@gmail.com"
             >
-              <TextHighlight class="underline">hiring me</TextHighlight>
-            </SmartLink>!
+              <TextHighlight class="underline">You can consider getting in touch!</TextHighlight>
+            </SmartLink>
           </p>
         </Card>
       </div>
@@ -219,9 +238,10 @@ import MainLayout from "~layouts/MainLayout.astro";
                 ).
               </span>,
               "TypeScript (still getting better at it).",
-              "ReactJS (NextJS, Gatsby)",
-              "VueJS (mainly used Vue 2).",
+              "React (Next.js, Gatsby)",
+              "Vue (mainly used Vue 2).",
               "Svelte (still learning).",
+              "Solidjs (still learning).",
               <span>
                 Astro (
                 <SmartLink
@@ -264,22 +284,23 @@ import MainLayout from "~layouts/MainLayout.astro";
               "JavaScript, Python, Bash or Ruby for basic scripting.",
               "Pure Data for graphic programming and sound/music processing.",
               "Processing (Java) / p5js for visuals.",
+              "Arduino.",
               "Currently learning ThreeJS for 3D web visuals.",
               "Shaders is on the list of things to learn as well.",
             ],
           },
         ].map(({ title, skills }) => (
-          <Accordion items={skills} open>
+          <AccordionList items={skills} open>
             {title}
-          </Accordion>
+          </AccordionList>
         ))
       }
     </section>
-    <p class="text-center">
+    <!-- <p class="text-center">
       I'm currently looking for a job, so feel free to
       <SmartLink class="p-1" href="mailto:roy.ede@gmail.com">
         <TextHighlight class="underline">get in touch.</TextHighlight>
       </SmartLink>
-    </p>
+    </p> -->
   </div>
 </MainLayout>

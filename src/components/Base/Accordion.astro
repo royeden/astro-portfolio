@@ -1,28 +1,24 @@
 ---
 import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
-
 export interface Props extends astroHTML.JSX.HTMLAttributes {
   open?: boolean;
-  items: astroHTML.JSX.Element[];
 }
 
-const { classList, items, ...props } = normalizeAstroClassListProps(
+const { classList, ...props } = normalizeAstroClassListProps(
   Astro.props as Props
 );
 ---
 
 <details {...props} class:list={classList}>
-  <summary class="group cursor-pointer focus:outline-none py-2">
-    <span
-      class="font-bold rounded-md transition duration-300 group-focus-visible:ring group-focus-visible:ring-white group-focus-visible:ring-opacity-80 group-focus-visible:group-hover:ring-opacity-100 w-full p-0.5"
+  <summary class="group cursor-pointer py-2 focus:outline-none">
+    <h3
+      class="inline w-full rounded-md p-0.5 text-lg font-bold transition duration-300 group-focus-visible:ring group-focus-visible:ring-white group-focus-visible:ring-opacity-80 group-focus-visible:group-hover:ring-opacity-100"
     >
       <slot />
-    </span>
+    </h3>
   </summary>
   <div class="mx-1 pt-1">
-    <ul class="ml-8 list-disc space-y-2">
-      {items.map((item) => <li>{item}</li>)}
-    </ul>
+    <slot name="content" />
   </div>
 </details>
 

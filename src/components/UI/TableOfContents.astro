@@ -1,5 +1,6 @@
 ---
 import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
+import Accordion from "~components/Base/Accordion.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
 import TextSubitle from "~components/Base/TextSubitle.astro";
 import Card from "./Card.astro";
@@ -17,21 +18,29 @@ const { classList, items, ...props } = normalizeAstroClassListProps(
 );
 ---
 
-<!-- TODO fix minor z-index glitch with borders --><!-- TODO implement intersection observer to fix table of contents in desktop context -->
+<!-- TODO fix minor z-index glitch with borders --><!-- TODO fix minor z-index glitch with borders --><!-- TODO implement intersection observer to fix table of contents in desktop context -->
 <Card
   {...props}
-  class:list={[classList, "divide-y divide-neutral-800 max-w-lg w-full"]}
+  class:list={[
+    classList,
+    "max-w-2xl w-full sticky top-1 p-1",
+  ]}
+  level={2}
 >
-  <TextSubitle class="p-3">Contents</TextSubitle>
-  {
-    items.map(({ title, id }) => (
-      <span class="transition-colors duration-300 hover:bg-white/5">
-        <SmartLink title={title} class="block w-full" href={`#${id}`}>
-          <TextHighlight class="block w-full p-3 underline">
-            {title}
-          </TextHighlight>
-        </SmartLink>
-      </span>
-    ))
-  }
+  <Accordion open>
+    Contents
+    <ul slot="content" class="divide-y divide-neutral-800 ">
+      {
+        items.map(({ title, id }) => (
+          <li class="transition-colors duration-300 hover:bg-white/5">
+            <SmartLink title={title} class="block w-full" href={`#${id}`}>
+              <TextHighlight class="block w-full p-3 underline">
+                {title}
+              </TextHighlight>
+            </SmartLink>
+          </li>
+        ))
+      }
+    </ul>
+  </Accordion>
 </Card>

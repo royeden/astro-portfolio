@@ -124,6 +124,24 @@ async function main() {
         message: (prev) => `What would describe "${prev}"?`,
         initial: `My ${label}'s description`,
       },
+      type === "project" && {
+        type: "text",
+        name: "url",
+        message: "The URL for the project",
+        initial: "https://",
+        validate(value) {
+          return value.startsWith("https://")
+        }
+      },
+      type === "project" && {
+        type: "text",
+        name: "repo",
+        message: "The URL for the repo",
+        initial: "https://github.com/",
+        validate(value) {
+          return value.startsWith("https://")
+        }
+      },
       {
         type: "confirm",
         name: "assets",
@@ -146,7 +164,7 @@ async function main() {
         initial: true,
         message: `Is this ${label} a draft?`,
       },
-    ],
+    ],filter(option => !!option),
     {
       onCancel,
     }
@@ -208,25 +226,16 @@ draft: ${post.draft}
 
 date: "${date.toDateString()}"
 description: "${post.description ?? ""}"
-${postImageSrc ? `image: "${postImageSrc}"` : '# image: ""'}
+${postImageSrc ? "" : "# "}image: "${postImageSrc || ""}"
+${postImageSrc ? "" : "# "}alt: "A screenshot showcasing the website"
 tags: [${post.tags.map((tag) => `"${tag}"`).join(", ")}]
 title: "${post.title}"
 ---
 import OptimizedImage from "~components/Base/OptimizedImage.astro"
 import SmartLink from "~components/Base/SmartLink.astro"
-import TextTitle from "~components/Base/TextTitle.astro"
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
+export const components = { a: SmartLink, img: OptimizedImage };
 
-# ${post.title}
-## ${post.description}
-${
-  postImageSrc
-    ? `<SmartLink class="flex w-full justify-center">
-  <OptimizedImage height={405} width={720} aspectRatio="16:9" src="${postImageSrc}" alt="main image for the post" />
-</SmartLink>`
-    : ""
-}
 <div id="content">
 ### About
 </div>`

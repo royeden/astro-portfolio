@@ -5,6 +5,7 @@ draft: false
 date: "2/27/2020"
 description: "A Synth that makes sound based on your movement with the help of TensorflowJS."
 image: "/assets/posts/projects/2020/02/27/motion-synth/motion-synth.png"
+alt: "A screenshot showcasing the website"
 tags:
   [
     "CSS",
@@ -21,26 +22,13 @@ title: "Motion Synth"
 
 import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
-import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
-
-# Motion Synth
-
-## A Synth that makes sound based on your movement with the help of TensorflowJS
-
-<SmartLink
-  class="flex w-full justify-center"
-  href="https://motion-synth.netlify.app/"
->
-  ![A screenshot showcasing the
-  app](/assets/posts/projects/2020/02/27/motion-synth/motion-synth.png)
-</SmartLink>
+export const components = { a: SmartLink, img: OptimizedImage };
 
 <div id="content">
 ### About
 
-_(This project is currently being revisited)_
+_(This project is currently being revisited)[/projects/2022/11/01/pose-ai-synth]_
 
 This project was born from testing a Proof Of Concept regarding the usage of TensorflowJS with React. It was inspired by the Theremin.
 

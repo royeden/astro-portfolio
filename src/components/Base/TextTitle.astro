@@ -8,12 +8,10 @@ const { classList, ...props } = normalizeAstroClassListProps(
 );
 ---
 
-<h1
-  {...props}
-  class:list={[
-    classList,
-    "text-center !text-transparent bg-repeat-y bg-clip-text font-bold !text-4xl !pb-1.5 !leading-snug md:!text-5xl lg:!text-7xl motion-safe:animate-gradient rainbow-gradient",
-  ]}
->
-  <slot />
+<h1 {...props} class:list={[classList, "not-prose"]}>
+  <span
+    class="block bg-clip-text bg-repeat-y pb-1.5 text-center text-4xl font-bold leading-snug text-transparent motion-safe:animate-gradient md:text-5xl lg:text-7xl rainbow-gradient "
+  >
+    <slot />
+  </span>
 </h1>

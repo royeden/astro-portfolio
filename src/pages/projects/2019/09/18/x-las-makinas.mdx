@@ -5,27 +5,15 @@ draft: false
 date: "9/18/2019"
 description: "A simple text scrambler made in a couple of hours intended to use for creating interesting texts."
 image: "/assets/posts/projects/2019/09/18/x-las-makinas/x-las-makinas.png"
+alt: "A screenshot showcasing the website"
 tags: ["HTML", "CSS", "JavaScript", "Art", "Open Source"]
 title: "X Las Makinas"
 ---
 
 import OptimizedImage from "~components/Base/OptimizedImage.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
-import TextTitle from "~components/Base/TextTitle.astro";
 
-export const components = { a: SmartLink, h1: TextTitle, img: OptimizedImage };
-
-# X Las Makinas
-
-## A simple text scrambler made in a couple of hours intended to use for creating interesting texts via repetition
-
-<SmartLink
-  class="flex w-full justify-center"
-  href="https://x-las-makinas.netlify.app/"
->
-  ![A screenshot showcasing the
-  website](/assets/posts/projects/2019/09/18/x-las-makinas/x-las-makinas.png)
-</SmartLink>
+export const components = { a: SmartLink, img: OptimizedImage };
 
 <div id="content">
   ### About
