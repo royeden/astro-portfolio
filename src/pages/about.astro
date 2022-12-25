@@ -21,9 +21,14 @@ import AccordionList from "~components/UI/AccordionList.astro";
   <SkipTo target="content">Skip to content</SkipTo>
   <SkipTo target="navigation">Skip to navigation</SkipTo>
   <div
-    class="space-y-8 flex flex-col items-center pt-8 w-full leading-snug bg-black/20 px-5 md:px-8"
+    class="flex w-full flex-col items-center space-y-8 bg-black/20 px-5 pt-8 leading-snug md:px-8"
   >
     <TextTitle>About</TextTitle>
+    <TextSubitle>
+      <h2>
+        Here you can see my personal / work experience and tools!
+      </h2>
+    </TextSubitle>
     <TableOfContents
       items={[
         {
@@ -40,7 +45,7 @@ import AccordionList from "~components/UI/AccordionList.astro";
         },
       ]}
     />
-    <section id="content" class="max-w-screen-lg w-full space-y-2" id="bio">
+    <section id="content" class="w-full max-w-screen-lg space-y-2" id="bio">
       <TextSubitle>
         <h2>Bio:</h2>
       </TextSubitle>
@@ -63,12 +68,12 @@ import AccordionList from "~components/UI/AccordionList.astro";
         </p>
       </TextRegular>
     </section>
-    <section class="max-w-screen-lg w-full space-y-2" id="experience">
+    <section class="w-full max-w-screen-lg space-y-2" id="experience">
       <TextSubitle>
         <h2>Experience:</h2>
       </TextSubitle>
       <!-- TODO change from flex to grid -->
-      <div class="gap-4 grid grid-cols-1 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         {
           [
             {
@@ -153,14 +158,9 @@ import AccordionList from "~components/UI/AccordionList.astro";
                 "Development in multiple projects",
                 "Designing training flows for new staff",
                 "Strive for better DX and accessibility",
-                "More info in the future, I'm still new 🙂"
+                "More info in the future, I'm still new 🙂",
               ],
-              stack: [
-                "React",
-                "Next.js",
-                "TailwindCSS",
-                "Typescript",
-              ],
+              stack: ["React", "Next.js", "TailwindCSS", "Typescript"],
             },
           ].map(
             ({
@@ -208,17 +208,16 @@ import AccordionList from "~components/UI/AccordionList.astro";
         >
           <header class="font-bold">This could be your company 😁</header>
           <p>
-            <SmartLink
-              class="p-1"
-              href="mailto:roy.ede@gmail.com"
-            >
-              <TextHighlight class="underline">You can consider getting in touch!</TextHighlight>
+            <SmartLink class="p-1" href="mailto:roy.ede@gmail.com">
+              <TextHighlight class="underline"
+                >You can consider getting in touch!</TextHighlight
+              >
             </SmartLink>
           </p>
         </Card>
       </div>
     </section>
-    <section class="max-w-screen-lg w-full space-y-3" id="toolbox">
+    <section class="w-full max-w-screen-lg space-y-3" id="toolbox">
       <TextSubitle>
         <h2>My Toolbox:</h2>
       </TextSubitle>
