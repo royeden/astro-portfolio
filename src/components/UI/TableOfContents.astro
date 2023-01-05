@@ -2,9 +2,9 @@
 import normalizeAstroClassListProps from "~utils/normalizeAstroClassListProps";
 import Accordion from "~components/Base/Accordion.astro";
 import SmartLink from "~components/Base/SmartLink.astro";
-import TextSubitle from "~components/Base/TextSubitle.astro";
 import Card from "./Card.astro";
 import TextHighlight from "./TextHighlight.astro";
+import styles from "./table-of-contents.module.css"
 
 export interface Props extends astroHTML.JSX.HTMLAttributes {
   items: {
@@ -23,13 +23,14 @@ const { classList, items, ...props } = normalizeAstroClassListProps(
   {...props}
   class:list={[
     classList,
-    "max-w-2xl w-full sticky top-1 p-1",
+    styles.container,
+    "max-w-2xl w-full sticky top-1 p-1 overflow-y-auto scrollbar-track-black/20 scrollbar scrollbar-thin scrollbar-thumb-pink-500",
   ]}
   level={2}
 >
-  <Accordion open>
+  <Accordion>
     Contents
-    <ul slot="content" class="divide-y divide-neutral-800 ">
+    <ul slot="content" class="divide-y divide-neutral-800">
       {
         items.map(({ title, id }) => (
           <li class="transition-colors duration-300 hover:bg-white/5">

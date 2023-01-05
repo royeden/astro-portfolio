@@ -55,7 +55,7 @@ const contents = headings.reduce((filtered, heading) => {
         <em>{alt}</em>
       </p>
     </SmartLink>
-    <div class="flex w-full justify-center">
+    <div class="w-full justify-center contents">
       <TableOfContents class="w-full not-prose" items={contents} />
     </div>
     <slot />
