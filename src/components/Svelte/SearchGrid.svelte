@@ -91,11 +91,11 @@
 
   {#if filteredItems.length > 0}
     <div
-      class="container grid h-full w-full gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+      class="container flex h-full w-full flex-wrap justify-center gap-2 items-center"
     >
       {#each filteredItems as item (item)}
         <a
-          class="group flex w-full flex-col justify-between space-y-2 overflow-hidden rounded-md border-2 border-neutral-800 bg-black/20 pb-2 transition duration-300 hover:border-white hover:bg-white/5 focus:border-white focus:outline-none focus-visible:bg-white/5 focus-visible:ring focus-visible:ring-white"
+          class="group flex w-full max-w-md flex-col justify-between space-y-2 self-stretch overflow-hidden rounded-md border-2 border-neutral-800 bg-black/20 pb-2 transition duration-300 hover:border-white hover:bg-white/5 focus:border-white focus:outline-none focus-visible:bg-white/5 focus-visible:ring focus-visible:ring-white md:max-w-xs"
           href={item.href}
           in:fade={{
             duration: REDUCED_MOTION ? 0 : duration,
