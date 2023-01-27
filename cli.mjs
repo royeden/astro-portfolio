@@ -164,7 +164,7 @@ async function main() {
         initial: true,
         message: `Is this ${label} a draft?`,
       },
-    ],filter(option => !!option),
+    ].filter(option => !!option),
     {
       onCancel,
     }
@@ -228,7 +228,7 @@ date: "${date.toDateString()}"
 description: "${post.description ?? ""}"
 ${postImageSrc ? "" : "# "}image: "${postImageSrc || ""}"
 ${postImageSrc ? "" : "# "}alt: "A screenshot showcasing the website"
-website: ""
+${type === projects ? 'website: ""' : ""}
 tags: [${post.tags.map((tag) => `"${tag}"`).join(", ")}]
 title: "${post.title}"
 ---
