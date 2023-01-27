@@ -51,11 +51,11 @@ const contents = headings.reduce((filtered, heading) => {
     <h2>{description}</h2>
     <SmartLink class="flex flex-col items-center mb-4 not-prose" href={website}>
       <OptimizedImage src={image} alt={alt} />
-      <p class="w-full flex items-center px-4">
+      <p class="flex w-full items-center px-4">
         <em>{alt}</em>
       </p>
     </SmartLink>
-    <div class="w-full justify-center contents">
+    <div class="contents w-full justify-center">
       <TableOfContents class="w-full not-prose" items={contents} />
     </div>
     <slot />

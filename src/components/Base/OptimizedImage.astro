@@ -18,18 +18,16 @@ const {
   ...props
 } = normalizeAstroClassListProps(Astro.props as Props);
 
-const optimizedSrc = (
-  await getImage({
-    aspectRatio,
-    src,
-    alt,
-    format,
-    position,
-    fit,
-    width,
-    height,
-  })
-);
+const optimizedSrc = await getImage({
+  aspectRatio,
+  src,
+  alt,
+  format,
+  position,
+  fit,
+  width,
+  height,
+});
 ---
 
 <img

@@ -4,16 +4,14 @@ import TextRegular from "~components/Base/TextRegular.astro";
 import TextTitle from "~components/Base/TextTitle.astro";
 import MainLayout from "~layouts/MainLayout.astro";
 
-const me = (
-  await getImage({
-    alt: "A picture of me looking at the camera",
-    src: "/assets/me.png",
-    height: 448,
-    width: 448,
-    format: "webp",
-    fit: "contain",
-  })
-);
+const me = await getImage({
+  alt: "A picture of me looking at the camera",
+  src: "/assets/me.png",
+  height: 448,
+  width: 448,
+  format: "webp",
+  fit: "contain",
+});
 
 // TODO export into different components to do some crazy css stunts & use a framework that does it on mount/update. This is currently SSR once because it's static
 const PHRASES = [
@@ -32,13 +30,13 @@ const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
     title: "Roy Eden - Welcome to my portfolio!",
   }}
 >
-  <div class="flex flex-col items-center pt-8 w-full">
+  <div class="flex w-full flex-col items-center pt-8">
     <div
-      class="bg-white rounded-full aspect-square md:w-full w-60 md:max-w-sm lg:max-w-md"
+      class="aspect-square w-60 rounded-full bg-white md:w-full md:max-w-sm lg:max-w-md"
     >
       <img
         {...me}
-        class="rounded-full motion-safe:animate-gradient rainbow-gradient"
+        class="rainbow-gradient rounded-full motion-safe:animate-gradient"
       />
     </div>
     <div class="w-full space-y-2 px-2 text-center">

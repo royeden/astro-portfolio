@@ -2,7 +2,6 @@
 import PostLayout, { Props } from "./PostLayout.astro";
 
 const props = Astro.props as Omit<Props, "layout">;
-
 ---
 
 <PostLayout {...props} layout="Blog">
