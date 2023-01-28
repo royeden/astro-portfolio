@@ -15,7 +15,7 @@ const { classList, level = 1, ...props } = normalizeAstroClassListProps(Astro.pr
     "border-2 rounded-lg border-neutral-800 flex flex-col w-full",
     {
       "bg-neutral-900/50": level === 1,
-      "motion-safe:backdrop-blur-sm motion-safe:bg-neutral-900/80 motion-reduce:bg-neutral-900/90": level === 2,
+      "motion-safe:backdrop-blur-sm bg-neutral-900/90": level === 2,
     }
   ]}
 >
