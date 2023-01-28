@@ -91,7 +91,7 @@
 
   {#if filteredItems.length > 0}
     <div
-      class="container flex h-full w-full flex-wrap justify-center gap-2 items-center"
+      class="container flex h-full w-full flex-wrap items-center justify-center gap-2"
     >
       {#each filteredItems as item (item)}
         <a
