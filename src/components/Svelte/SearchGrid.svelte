@@ -1,5 +1,6 @@
 <script lang="ts">
   // TODO implement custom transition so height collapses as well
+  import styles from "./searchgrid.module.css"
   import { fade } from "svelte/transition";
   import { flip } from "svelte/animate";
   import { Post } from "~constants/posts";
@@ -90,12 +91,10 @@
   </div>
 
   {#if filteredItems.length > 0}
-    <div
-      class="container flex h-full w-full flex-wrap items-center justify-center gap-2"
-    >
+    <div class={`grid h-full w-full items-center justify-center gap-2 ${styles.grid}`}>
       {#each filteredItems as item (item)}
         <a
-          class="group flex w-full max-w-md flex-col justify-between space-y-2 self-stretch overflow-hidden rounded-md border-2 border-neutral-800 bg-black/20 pb-2 transition duration-300 hover:border-white hover:bg-white/5 focus:border-white focus:outline-none focus-visible:bg-white/5 focus-visible:ring focus-visible:ring-white md:max-w-xs"
+          class="group flex w-full max-w-md flex-col justify-between space-y-2 self-stretch overflow-hidden rounded-md border-2 border-neutral-800 bg-black/20 pb-2 transition duration-300 hover:border-white hover:bg-white/5 focus:border-white focus:outline-none focus-visible:bg-white/5 focus-visible:ring focus-visible:ring-white"
           href={item.href}
           in:fade={{
             duration: REDUCED_MOTION ? 0 : duration,
