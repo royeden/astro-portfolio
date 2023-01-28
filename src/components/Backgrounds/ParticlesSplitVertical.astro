@@ -84,8 +84,6 @@
             200
         ) * 100;
 
-      console.log(amount);
-
       stars = Array.from({ length: amount }, () => new Star(0, 0, 0));
       rafId && cancelAnimationFrame(rafId);
       const { clientWidth: width, clientHeight: height } = container;
