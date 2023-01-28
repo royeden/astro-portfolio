@@ -47,7 +47,7 @@ const contents = headings.reduce((filtered, heading) => {
   <SkipTo target="content">Skip to content</SkipTo>
   <SkipTo target="navigation">Skip to navigation</SkipTo>
   <div class:list={[styles.content, "sm:max-w-2xl w-full"]}>
-    <TextTitle>{title}</TextTitle>
+    <TextTitle class="not-prose">{title}</TextTitle>
     <h2>{description}</h2>
     <SmartLink class="flex flex-col items-center mb-4 not-prose" href={website}>
       <OptimizedImage src={image} alt={alt} />
