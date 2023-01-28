@@ -77,7 +77,7 @@ function pageTransitionOut(event: MouseEvent) {
       );
 
       pageOutAnimation.onfinish = () =>
-        (window.location.href = `${href}?${TRANSITION_PARAM_KEY}=true`);
+        (window.location.assign(`${href}?${TRANSITION_PARAM_KEY}=true`));
     }
   }
 }
