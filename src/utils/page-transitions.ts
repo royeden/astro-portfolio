@@ -6,7 +6,7 @@ export const TRANSITION_PARAM_KEY = "transition";
 
 export function pageTransitionIn() {
   const search = new URLSearchParams(window.location.search);
-  const wouldChange = main.style.willChange
+  const wouldChange = main.style.willChange;
   function cleanupTransitionStyles() {
     main.style.height = "auto";
     main.style.opacity = "1";
@@ -20,13 +20,13 @@ export function pageTransitionIn() {
         ? `${window.location.pathname}?${search}`
         : window.location.pathname
     );
-    main.style.willChange = wouldChange
+    main.style.willChange = wouldChange;
   }
   if (search.get(TRANSITION_PARAM_KEY)) {
     if (REDUCED_MOTION) {
       cleanupTransitionStyles();
     } else {
-      main.style.willChange = "height"
+      main.style.willChange = "height";
       const pageInAnimation = main.animate(
         [
           { opacity: 0, height: 0 },
@@ -60,7 +60,7 @@ function pageTransitionOut(event: MouseEvent) {
 
     if (window.location.pathname !== pathname) {
       if (pageOutAnimation) pageOutAnimation.cancel();
-      main.style.willChange = "height"
+      main.style.willChange = "height";
       pageOutAnimation = main.animate(
         [
           { opacity: 1, height: `${main.clientHeight}px` },
