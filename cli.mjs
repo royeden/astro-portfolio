@@ -228,7 +228,7 @@ date: "${date.toDateString()}"
 description: "${post.description ?? ""}"
 ${postImageSrc ? "" : "# "}image: "${postImageSrc || ""}"
 ${postImageSrc ? "" : "# "}alt: "A screenshot showcasing the website"
-${type === projects ? 'website: ""' : ""}
+${type === "projects" ? 'website: ""' : ""}
 tags: [${post.tags.map((tag) => `"${tag}"`).join(", ")}]
 title: "${post.title}"
 ---
